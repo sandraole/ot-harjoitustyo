@@ -2,4 +2,4 @@
 
 Olen alustavasti tekemässä **budjetointisovellusta**, jonka *vaatimusmäärittely* tarkentuu ensi viikon aikana.
 
-[Siirry laskarit-hakemistoon](laskarit/)
+Siirry hakemistoon [laskarit](laskarit/)
