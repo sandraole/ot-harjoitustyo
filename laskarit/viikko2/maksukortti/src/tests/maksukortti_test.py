@@ -41,8 +41,6 @@ class TestMaksukortti(unittest.TestCase):
         self.assertEqual(self.kortti.saldo_euroina(), 150.0)
 
 
-    # itse tehdyt testit
-
     def test_maukkaan_lounaan_syominen_ei_vie_saldoa_negatiiviseksi(self):
         kortti = Maksukortti(200)
         kortti.syo_maukkaasti()
@@ -69,3 +67,42 @@ class TestMaksukortti(unittest.TestCase):
 
         self.assertEqual(kortti.saldo_euroina(), 0.0)
     
+
+    def test_tarkista_alussa_onko_kortin_saldo_oikein(self):
+        self.assertEqual(self.kortti.saldo, 1000)
+
+
+    def test_rahan_lataaminen_kasvattaa_saldoa_oikein(self):
+        self.kortti.lataa_rahaa(300)
+
+        self.assertEqual(self.kortti.saldo, 1300)
+
+
+    def test_saldo_vähenee_oikein_jos_rahaa_on_tarpeeksi(self):
+        self.kortti.syo_edullisesti()
+
+        self.assertEqual(self.kortti.saldo, 750)
+
+
+    def test_saldo_ei_muutu_jos_rahaa_ei_ole_tarpeeksi(self):
+        kortti = Maksukortti(100)
+        tulos = kortti.syo_edullisesti()
+
+        self.assertEqual(kortti.saldo, 100)
+        self.assertFalse(tulos)
+
+
+    def test_metodi_palauttaa_false_jos_rahat_eivat_riita(self):
+        kortti = Maksukortti(150)
+        tulos = kortti.syo_maukkaasti()
+
+        self.assertFalse(tulos)
+        self.assertEqual(kortti.saldo, 150)
+
+
+    def test_metodi_palauttaa_true_jos_rahat_riittavat(self):
+        kortti = Maksukortti(500)
+        tulos = kortti.syo_maukkaasti()
+
+        self.assertTrue(tulos)
+        self.assertEqual(kortti.saldo, 100)
