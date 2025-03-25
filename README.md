@@ -4,6 +4,6 @@ Olen alustavasti tekemässä **budjetointisovellusta**, jonka *vaatimusmääritt
 
 [laskarit](laskarit/)
 
-[vaatimusmäärittely](dokumentaatio/vaatimusmaarrittely.md)
+[vaatimusmäärittely](dokumentaatio/vaatimusmaarittely.md)
 
 [työaikakirjanpito](dokumentaatio/tyoaikakirjanpito.md)
