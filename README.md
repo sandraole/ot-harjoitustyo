@@ -1,9 +1,10 @@
-# Ohjelmistotekniikka, harjoitustyö
+# Budjetointisovellus
 
-Olen alustavasti tekemässä **budjetointisovellusta**, jonka *vaatimusmäärittely* tarkentuu ensi viikon aikana.
+Tämä on yksinkertainen budjetointisovellus, jonka avulla käyttäjät voivat seurata tuloja ja menoja eri ajanjaksoilta – viikoittain, kuukausittain tai vuositasolla. Sovellus tukee useita käyttäjiä, joista jokaisella on oma henkilökohtainen tili ja budjettiseuranta.
 
-[laskarit](laskarit/)
+## Dokumentaatio
 
-[vaatimusmaarittely](dokumentaatio/vaatimusmaarittely.md)
+- [Vaatimusmaarittely](dokumentaatio/vaatimusmaarittely.md)
+- [Työaikakirjanpito](dokumentaatio/tyoaikakirjanpito.md)
+- [Changelog](dokumentaatio/changelog.md)
 
-[työaikakirjanpito](dokumentaatio/tyoaikakirjanpito.md)
