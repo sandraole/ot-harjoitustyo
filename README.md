@@ -8,3 +8,28 @@ Tämä on yksinkertainen budjetointisovellus, jonka avulla käyttäjät voivat s
 - [Työaikakirjanpito](dokumentaatio/tyoaikakirjanpito.md)
 - [Changelog](dokumentaatio/changelog.md)
 
+## Komentorivitoiminnot
+
+### Ohjelman käynnistäminen
+
+Ohjelman voi käynnistää komennolla:
+
+```bash
+poetry run invoke start
+```
+
+### Ohjelman testaaminen
+
+Ohjelman testit voidaan suorittaa komennolla:
+
+```bash
+poetry run invoke test
+```
+
+### Testikattavuuden selvittäminen
+
+Testikatavuusraportin voi suorittaa komennolla:
+
+```bash
+poetry run invoke coverage-report
+```
