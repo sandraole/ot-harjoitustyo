@@ -1,5 +1,6 @@
 import json
 
+
 class UserService:
     def __init__(self, file_path="data/users.json"):
         self._file_path = file_path
@@ -25,5 +26,6 @@ class UserService:
 
     def authenticate(self, username, password):
         return self._users.get(username) == password
+
 
 user_service = UserService()

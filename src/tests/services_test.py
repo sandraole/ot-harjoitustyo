@@ -2,6 +2,7 @@ import unittest
 import os
 from services.user_service import UserService
 
+
 class TestUserService(unittest.TestCase):
 
     def setUp(self):
@@ -19,5 +20,5 @@ class TestUserService(unittest.TestCase):
 
     def test_create_user_success(self):
         self.user_service.create_user("testuser", "testpassword")
-        self.assertTrue(self.user_service.authenticate("testuser", "testpassword"))
-
+        self.assertTrue(self.user_service.authenticate(
+            "testuser", "testpassword"))
