@@ -7,3 +7,5 @@
 - Projekti on alustettu ja pohjarunko on toimiva.
 - Ensimmäinen testi on toteutettu.
 - Koodin laatua on parannettu autopep8 avulla.
+- Invoket otettu käyttöön.
+- Dokumentointi ja README päivitetty.
