@@ -1,0 +1,1 @@
+![Sovelluksen arkkitehtuuri](arkkitehtuuri.jpeg)
