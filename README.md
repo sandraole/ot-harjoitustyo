@@ -7,6 +7,7 @@ Tämä on yksinkertainen budjetointisovellus, jonka avulla käyttäjät voivat s
 - [Vaatimusmaarittely](dokumentaatio/vaatimusmaarittely.md)
 - [Työaikakirjanpito](dokumentaatio/tyoaikakirjanpito.md)
 - [Changelog](dokumentaatio/changelog.md)
+- [Arkkitehtuuri](dokumentaatio/arkkitehtuuri.md)
 
 ## Komentorivitoiminnot
 
