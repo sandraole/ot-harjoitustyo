@@ -5,6 +5,8 @@
 Sovelluksen tavoite on olla sovelluksen käyttäjän työkalu henkilökohtaisen budjetin seuraamista varten.
 
 ### Perusversio
+ - Käyttäjä voi tehdä käyttäjätunuksen. (Tehty)
+ - Käyttäjä voi kirjautua omalle sivulleen omalla käyttäjätunnuksella. (Tehty)
  - Käyttäjä voi lisätä tuloja ja menoja.
  - Käyttäjä voi valita tapahtumalle summan, päivämäärän, kategorian, sekä kirjoittaa lisätietoja tapahtumasta.
  - Käyttäjälle näkyy listaus kaikista tapahtumista.
