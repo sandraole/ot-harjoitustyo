@@ -1,19 +1,20 @@
 import json
 
 class UserService:
-    def __init__(self):
+    def __init__(self, file_path="data/users.json"):
+        self._file_path = file_path
         self._users = {}
         self._load_users()
 
     def _load_users(self):
         try:
-            with open("data/users.json", "r") as file:
+            with open(self._file_path, "r") as file:
                 self._users = json.load(file)
         except FileNotFoundError:
             self._users = {}
 
     def _save_users(self):
-        with open("data/users.json", "w") as file:
+        with open(self._file_path, "w") as file:
             json.dump(self._users, file)
 
     def create_user(self, username, password):
