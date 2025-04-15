@@ -7,7 +7,9 @@ Sovelluksen tavoite on olla sovelluksen käyttäjän työkalu henkilökohtaisen 
 ### Perusversio
  - Käyttäjä voi tehdä käyttäjätunuksen. (Tehty)
  - Käyttäjä voi kirjautua omalle sivulleen omalla käyttäjätunnuksella. (Tehty)
- - Käyttäjä voi lisätä tuloja ja menoja.
+ - Käyttäjä voi lisätä menoja. (Tehty)
+ - Käyttäjä voi poistaa menoja. (Tehty)
+ - Käyttäjä voi lisätä tuloja.
  - Käyttäjä voi valita tapahtumalle summan, päivämäärän, kategorian, sekä kirjoittaa lisätietoja tapahtumasta.
  - Käyttäjälle näkyy listaus kaikista tapahtumista.
  - Käyttäjä voi katsoa viikon, kuukauden ja vuoden yhteenvedot tuloista ja menoista.
