@@ -1,5 +1,5 @@
 import json
-
+import os
 
 class UserService:
     def __init__(self, file_path="data/users.json"):
@@ -15,8 +15,17 @@ class UserService:
             self._users = {}
 
     def _save_users(self):
-        with open(self._file_path, "w") as file:
-            json.dump(self._users, file)
+        directory = os.path.dirname(self._file_path)
+        if not os.path.exists(directory):
+            try:
+                os.makedirs(directory)
+            except Exception as e:
+                print(f"Could not create directory {directory}: {e}")
+        try:
+            with open(self._file_path, "w") as file:
+                json.dump(self._users, file)
+        except Exception as e:
+            print(f"Failed to save users: {e}")
 
     def create_user(self, username, password):
         if username in self._users:
@@ -26,6 +35,5 @@ class UserService:
 
     def authenticate(self, username, password):
         return self._users.get(username) == password
-
 
 user_service = UserService()
