@@ -19,3 +19,12 @@ def coverage(ctx):
 @task(coverage)
 def coverage_report(ctx):
     ctx.run("coverage html", pty=True)
+
+@task
+def format(ctx):
+    ctx.run("black .", pty=True)
+    ctx.run("isort .", pty=True)
+
+@task
+def lint(ctx):
+    ctx.run("flake8 .", pty=True)
