@@ -1,6 +1,6 @@
 # Ohjelmistotekniikka, harjoitustyö
 
-Helsingin yliopiston kurssi **"Ohjelmistotekniikka"**, alustava _vaatimusmäärittely_ tulee ensi viikolla.
+Helsingin yliopiston kurssin **"Ohjelmistotekniikka"** alustava _vaatimusmäärittely_ julkaistaan ensi viikolla.
 
 ## Tehtävät
 
