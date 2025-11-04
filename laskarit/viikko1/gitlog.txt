@@ -1,0 +1,113 @@
+commit 1e46460151740201f732bc5d3db9b7a33e5e33df
+Author: Sandra Ole <sandra.ole@hotmail.fi>
+Date:   Tue Nov 4 20:39:38 2025 +0200
+
+    muutoksia
+
+ tiedostoja/file2             | 0
+ tiedostoja/{file1 => file22} | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+
+commit a0b1ed2462be6142d5122894d859127157d8887d
+Author: Sandra Ole <sandra.ole@hotmail.fi>
+Date:   Tue Nov 4 20:35:53 2025 +0200
+
+    uusia juttuja
+
+ tiedostoja/file1 | 0
+ tiedostoja/file2 | 0
+ tiedostoja/file3 | 1 +
+ 3 files changed, 1 insertion(+)
+
+commit 80b5d70bd3aa8305a8b836c607218cd367581a11
+Author: Sandra Ole <sandra.ole@hotmail.fi>
+Date:   Tue Nov 4 20:29:36 2025 +0200
+
+    muutoksia
+
+ eka.txt    | 4 ++--
+ kolmas.txt | 3 +++
+ 2 files changed, 5 insertions(+), 2 deletions(-)
+
+commit 6a350a7bc1b94931a96a4bd0dc7579cc852b57fc
+Author: Sandra Ole <sandra.ole@hotmail.fi>
+Date:   Tue Nov 4 20:26:18 2025 +0200
+
+    tiedoston nimenmuutos
+
+ tiedosto.txt => eka.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 50826413a194df520808cb5b5b2cbb0c5ea6db1f
+Author: Sandra Ole <sandra.ole@hotmail.fi>
+Date:   Tue Nov 4 20:24:29 2025 +0200
+
+    poistettu
+
+ toinen.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit 5cb0d90a8601ff5a061adabd607f391e97c02c7c
+Author: Sandra Ole <sandra.ole@hotmail.fi>
+Date:   Tue Nov 4 20:21:32 2025 +0200
+
+    paljon tekstiä
+
+ tiedosto.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+commit bdc0892ed812e0aebfc4b07b7156a643efb5e6c1
+Author: Sandra Ole <sandra.ole@hotmail.fi>
+Date:   Tue Nov 4 20:20:15 2025 +0200
+
+    paljon tekstiä
+
+ tiedosto.txt | 43 ++++++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 42 insertions(+), 1 deletion(-)
+
+commit f1a9f01c154f40a3ac1c2988dd8bbd4c967fadf0
+Author: Sandra Ole <sandra.ole@hotmail.fi>
+Date:   Tue Nov 4 20:10:57 2025 +0200
+
+    uusi kansio ja tiedosto
+
+ stuff/juujuu.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit a5bc6c8758cfa1156bc142c8c0a00ad323de7860
+Author: Sandra Ole <sandra.ole@hotmail.fi>
+Date:   Tue Nov 4 20:09:32 2025 +0200
+
+    muutoksia tiedostoihin
+
+ kolmas.txt | 2 +-
+ toinen.txt | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+commit 69238f733dce1a8f8513984d820768a769ea76b6
+Author: Sandra Ole <sandra.ole@hotmail.fi>
+Date:   Tue Nov 4 20:08:03 2025 +0200
+
+    uusi tiedosto kolmas.txt lisätty
+
+ kolmas.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit c1086c2fc39b81aa448daede553ebd3859fc0088
+Author: Sandra Ole <sandra.ole@hotmail.fi>
+Date:   Tue Nov 4 20:04:52 2025 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 2 ++
+ toinen.txt   | 1 +
+ 2 files changed, 3 insertions(+)
+
+commit 42ec761c5232d695cb0a1fe40bab9b940f740006
+Author: Sandra Ole <sandra.ole@hotmail.fi>
+Date:   Tue Nov 4 20:02:06 2025 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 1 +
+ 1 file changed, 1 insertion(+)
