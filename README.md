@@ -1,6 +1,6 @@
 # Ohjelmistotekniikka, harjoitustyö
 
-Helsingin yliopiston kurssi **"Ohjelmistotekniikka"**, toteutus _syksy 2025._
+Helsingin yliopiston kurssi **"Ohjelmistotekniikka"**. Toteutus _syksy 2025._
 
 ## Tehtävät
 
