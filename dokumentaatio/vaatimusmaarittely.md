@@ -37,11 +37,12 @@ Myöhemmin sovellusta voidaan laajentaa myös useammalle käyttäjälle.
   
 - Esimerkki valikosta:
 - **Book Tracker:**
-___- Lisää kirja___
-___- Näytä kaikki kirjat___
-___- Merkitse kirja luetuksi / Päivitä edistymistä___
-___- Poista kirja___
-___- Näytä tilastot___
-___- Kirjaudu ulos___
+- Lisää kirja
+- Näytä kaikki kirjat
+- Merkitse kirja luetuksi / Päivitä edistymistä
+- Poista kirja
+- Näytä tilastot
+- Kirjaudu ulos
+
 
 
