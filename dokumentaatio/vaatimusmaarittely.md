@@ -10,7 +10,7 @@ Käyttäjä voi lisätä kirjoja lukulistalle, merkitä kirjoja luetuksi, sekä 
 Sovelluksen tarkoitus on motivoida lukemaan enemmän, sekä muistamaan jo luetut kirjat.
 
 ### Käyttäjät
-Sovelluksessa on aluksi tarkoitus olla vain yksi käyttäjärooli: __normaali käyttäjä__, joka käyttää sovellusta henkilökohtaisesti.
+Sovelluksessa on aluksi tarkoitus olla vain yksi käyttäjärooli: ___normaali käyttäjä___, joka käyttää sovellusta henkilökohtaisesti.
 Myöhemmin sovellusta voidaan laajentaa myös useammalle käyttäjälle.
 
 ### Perusversion toiminnallisuudet
@@ -36,10 +36,11 @@ Myöhemmin sovellusta voidaan laajentaa myös useammalle käyttäjälle.
 - Tulossa tällä viikolla ennen koodauksen aloittamista
   
 - Esimerkki valikosta:
-  - **Book Tracker:**
-  - __1. Lisää kirja
-    2. Näytä kaikki kirjat
-    3. Merkitse kirja luetuksi / Päivitä edistymistä
-    4. Poista kirja
-    5. Näytä tilastot
-    6. Kirjaudu ulos__
+- **Book Tracker:**
+___- 1. Lisää kirja___
+___- 2. Näytä kaikki kirjat___
+___- 3. Merkitse kirja luetuksi / Päivitä edistymistä___
+___- 4. Poista kirja___
+___- 5. Näytä tilastot___
+___- 6. Kirjaudu ulos___
+
