@@ -35,14 +35,15 @@ Myöhemmin sovellusta voidaan laajentaa myös useammalle käyttäjälle.
 ### Luonnos käyttöliittymästä
 - Tulossa tällä viikolla ennen koodauksen aloittamista
   
-- Esimerkki valikosta:
-- **Book Tracker:**
+### Esimerkki valikosta:
+**Book Tracker:**
 - Lisää kirja
 - Näytä kaikki kirjat
 - Merkitse kirja luetuksi / Päivitä edistymistä
 - Poista kirja
 - Näytä tilastot
 - Kirjaudu ulos
+
 
 
 
