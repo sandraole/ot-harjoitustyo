@@ -1,6 +1,6 @@
 # Book Tracker
 
-Book Tracker mahdollistaa pitämään kirjaa mitä kirjoja on lukenut ja seuraamaan omia lukutavoitteita. Käyttäjä voi lisätä kirjoja lukulistalle, merkitä kirjoja luetuksi, sekä seurata kuinka monta kirjaa ja sivua hän on lukenut. Sovelluksen tarkoitus on motivoida lukemaan enemmän, sekä muistamaan jo luetut kirjat.
+Book Tracker on sovellus, jonka avulla käyttäjä voi seurata lukemiaan kirjoja ja omia lukutavoitteitaan. Käyttäjä voi lisätä kirjoja lukulistalle, merkitä kirjoja luetuiksi sekä seurata luettujen kirjojen ja sivujen määrää. Sovelluksen tarkoituksena on motivoida käyttäjää lukemaan enemmän ja toimia muistilistana jo luetuista kirjoista.
 
 ### Laskarit
 [Viikko1](https://github.com/sandraole/ot-harjoitustyo/tree/master/laskarit/viikko1)
