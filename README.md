@@ -9,7 +9,7 @@ Sovelluksen tarkoituksena on motivoida käyttäjää lukemaan enemmän ja toimia
 
 [Viikko2](https://github.com/sandraole/ot-harjoitustyo/tree/master/laskarit/viikko2)
 
-## Dokumentaatio
+### Dokumentaatio
 [Vaatimusmäärittely](https://github.com/sandraole/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
 
 [Työaikakirjanpito](https://github.com/sandraole/ot-harjoitustyo/blob/master/dokumentaatio/tyoaikakirjanpito.md)
