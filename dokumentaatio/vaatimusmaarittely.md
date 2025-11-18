@@ -12,8 +12,8 @@ Sovelluksessa on aluksi tarkoitus olla vain yksi käyttäjärooli: ___normaali k
 Myöhemmin sovellusta voidaan laajentaa myös useammalle käyttäjälle.
 
 ### Perusversion toiminnallisuudet
-- Käyttäjä voi tehdä käyttäjätunnuksen.
-- Käyttäjä voi kirjautua omalle sivulleen omalla käyttäjätunnuksella.
+- Käyttäjä voi tehdä käyttäjätunnuksen. (Tehty)
+- Käyttäjä voi kirjautua omalle sivulleen omalla käyttäjätunnuksella. (Tehty)
 - Käyttäjä voi lisätä uuden kirjan listalle (nimi, kirjailija, sivumääärä)
 - Käyttäjä voi merkitä kirjan luetuksi.
 - Käyttäjä voi poistaa kirjan.
@@ -40,6 +40,7 @@ Myöhemmin sovellusta voidaan laajentaa myös useammalle käyttäjälle.
 - Poista kirja
 - Näytä tilastot
 - Kirjaudu ulos
+
 
 
 
