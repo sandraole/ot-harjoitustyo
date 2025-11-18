@@ -17,3 +17,29 @@ Sovelluksen tarkoituksena on motivoida käyttäjää lukemaan enemmän ja toimia
 [Työaikakirjanpito](https://github.com/sandraole/ot-harjoitustyo/blob/master/dokumentaatio/tyoaikakirjanpito.md)
 
 [Changelog](https://github.com/sandraole/ot-harjoitustyo/blob/master/dokumentaatio/changelog.md)
+
+## Komentorivitoiminnot
+
+### Ohjelman käynnistäminen
+
+Ohjelman voi käynnistää komennolla:
+
+```bash
+poetry run invoke start
+```
+
+### Ohjelman testaaminen
+
+Ohjelman testit voidaan suorittaa komennolla:
+
+```bash
+poetry run invoke test
+```
+
+### Testikattavuuden selvittäminen
+
+Testikatavuusraportin voi suorittaa komennolla:
+
+```bash
+poetry run invoke coverage-report
+```
