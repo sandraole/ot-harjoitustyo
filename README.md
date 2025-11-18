@@ -5,7 +5,7 @@ Book Tracker on sovellus, jonka avulla käyttäjä voi seurata lukemiaan kirjoja
 Sovelluksen tarkoituksena on motivoida käyttäjää lukemaan enemmän ja toimia muistilistana jo luetuista kirjoista.
 
 
-### Laskarit
+## Laskarit
 [Viikko1](https://github.com/sandraole/ot-harjoitustyo/tree/master/laskarit/viikko1)
 
 [Viikko2](https://github.com/sandraole/ot-harjoitustyo/tree/master/laskarit/viikko2)
@@ -13,7 +13,7 @@ Sovelluksen tarkoituksena on motivoida käyttäjää lukemaan enemmän ja toimia
 [Viikko3](https://github.com/sandraole/ot-harjoitustyo/tree/master/laskarit/viikko3)
 
 
-### Dokumentaatio
+## Dokumentaatio
 [Vaatimusmäärittely](https://github.com/sandraole/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
 
 [Työaikakirjanpito](https://github.com/sandraole/ot-harjoitustyo/blob/master/dokumentaatio/tyoaikakirjanpito.md)
