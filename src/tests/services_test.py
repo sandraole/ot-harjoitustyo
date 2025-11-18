@@ -6,8 +6,8 @@ from services.user_service import UserService
 class TestUserService(unittest.TestCase):
 
     def setUp(self):
-        self.test_file = "data/test_users.json"
-        os.makedirs("data", exist_ok=True)
+        self.test_file = "src/data/test_users.json"
+        os.makedirs("src/data", exist_ok=True)
 
         self.user_service = UserService(self.test_file)
 
