@@ -11,3 +11,7 @@ class MainView(tk.Frame):
         form_frame = tk.Frame(self)
         form_frame.pack(pady=10)
 
+    def start(self):
+        """Käynnistää käyttöliittymän."""
+        self._show_login_view()
+
