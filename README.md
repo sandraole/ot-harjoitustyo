@@ -12,6 +12,8 @@ Sovelluksen tarkoituksena on motivoida käyttäjää lukemaan enemmän ja toimia
 
 [Changelog](https://github.com/sandraole/ot-harjoitustyo/blob/master/dokumentaatio/changelog.md)
 
+[Arkkitehtuuri](https://github.com/sandraole/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)
+
 
 ## Komentorivitoiminnot
 
