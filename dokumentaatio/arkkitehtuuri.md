@@ -2,7 +2,7 @@
 
 ```mermaid
  classDiagram
-      UserSerice "*" --> "1" User
+      UserService "*" --> "1" User
       class User{
           username
           password
@@ -12,4 +12,5 @@
           users
       }
 ```
+
 
