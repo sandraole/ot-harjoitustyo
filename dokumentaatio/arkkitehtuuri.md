@@ -1,5 +1,7 @@
 # Sovelluslogiikka
 
+Sovelluksen alustava logiikka --> tarkentuu toiminnallisuuden lisääntyessä
+
 ```mermaid
  classDiagram
       UserService "*" --> "1" User
@@ -12,5 +14,6 @@
           users
       }
 ```
+
 
 
