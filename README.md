@@ -40,3 +40,11 @@ Testikatavuusraportin voi suorittaa komennolla:
 ```bash
 poetry run invoke coverage-report
 ```
+
+### Pylint
+
+Projektin .pylintrc-tiedostossa määritellyt tarkistukset voi suorittaa komennolla:
+
+```bash
+poetry run invoke lint
+```
