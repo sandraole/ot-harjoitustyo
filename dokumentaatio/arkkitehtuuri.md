@@ -2,7 +2,7 @@
 
 ```mermaid
  classDiagram
-      Book Tracker "*" --> "1" User
+      UserSerice "*" --> "1" User
       class User{
           username
           password
@@ -12,5 +12,4 @@
           users
       }
 ```
-
 
