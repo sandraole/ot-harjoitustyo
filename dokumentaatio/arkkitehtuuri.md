@@ -1,3 +1,16 @@
 # Sovelluslogiikka
-https://github.com/sandraole/ot-harjoitustyo/blob/master/dokumentaatio/sovelluslogiikka.jpeg
+
+```mermaid
+ classDiagram
+      Book Tracker "*" --> "1" User
+      class User{
+          username
+          password
+      }
+      class UserService{
+          file_path
+          users
+      }
+```
+
 
