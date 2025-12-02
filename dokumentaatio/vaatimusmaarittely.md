@@ -14,9 +14,9 @@ Myöhemmin sovellusta voidaan laajentaa myös useammalle käyttäjälle.
 ### Perusversion toiminnallisuudet
 - Käyttäjä voi tehdä käyttäjätunnuksen. (Tehty)
 - Käyttäjä voi kirjautua omalle sivulleen omalla käyttäjätunnuksella. (Tehty)
-- Käyttäjä voi lisätä uuden kirjan listalle (nimi, kirjailija, sivumääärä)
+- Käyttäjä voi lisätä uuden kirjan listalle (nimi, kirjailija, sivumääärä) (Tehty)
+- Käyttäjä voi poistaa kirjan. (Tehty)
 - Käyttäjä voi merkitä kirjan luetuksi.
-- Käyttäjä voi poistaa kirjan.
 - Käyttäjä voi nähdä kaikki kirjat (eritelty luettuihin ja lukemattomiin)
 - Sovellus osaa laskea ja näyttää:
   - luettujen kirjojen määrän
@@ -40,6 +40,7 @@ Myöhemmin sovellusta voidaan laajentaa myös useammalle käyttäjälle.
 - Poista kirja
 - Näytä tilastot
 - Kirjaudu ulos
+
 
 
 
