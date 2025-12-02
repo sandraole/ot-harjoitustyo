@@ -16,6 +16,8 @@ Toivoisin erityisesti palautetta ja parannusehdotuksia koodin laatuun ja rakente
 
 [Arkkitehtuuri](https://github.com/sandraole/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)
 
+[Release](https://github.com/sandraole/ot-harjoitustyo/releases/tag/v1.0.0)
+
 ## Asennus
 
 ### Riippuvuuksien asentaminen
