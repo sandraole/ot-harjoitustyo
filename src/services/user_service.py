@@ -17,14 +17,14 @@ class UserService:
 
     def _save_users(self):
         directory = os.path.dirname(self._file_path)
-        if not os.path.exists(directory):
+        if directory and not os.path.exists(directory):
             try:
                 os.makedirs(directory)
             except OSError as e:
                 print(f"Could not create directory {directory}: {e}")
+
         try:
             with open(self._file_path, "w", encoding="utf-8") as file:
-
                 json.dump(self._users, file)
         except OSError as e:
             print(f"Failed to save users: {e}")
@@ -37,6 +37,3 @@ class UserService:
 
     def authenticate(self, username, password):
         return self._users.get(username) == password
-
-
-user_service = UserService()

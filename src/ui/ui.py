@@ -1,56 +1,100 @@
 import tkinter as tk
 from tkinter import ttk, messagebox
-from services.user_service import user_service
-from .register import RegisterView
-from .main import MainView
+from ui.main import MainView
+from ui.register import RegisterView
 
 
 class UI:
-
-    def __init__(self, root):
+    def __init__(self, root, user_service):
         self._root = root
-        self._frame = None
+        self._user_service = user_service
+        self._current_view = None
 
     def start(self):
         self._show_login_view()
 
+    def _clear_current_view(self):
+        if self._current_view is not None:
+            self._current_view.destroy()
+            self._current_view = None
+
     def _show_login_view(self):
-        if self._frame:
-            self._frame.destroy()
+        self._clear_current_view()
 
-        self._frame = tk.Frame(
-            master=self._root, bg="#3498db", padx=10, pady=10)
-        self._frame.pack(fill="both", expand=True)
+        frame = tk.Frame(master=self._root, padx=10, pady=10)
+        frame.pack(fill="both", expand=True)
+        self._current_view = frame
 
-        tk.Label(self._frame, text="Login", font=("Arial", 16),
-                 bg="#3498db", fg="white").pack(pady=10)
+        tk.Label(
+            frame,
+            text="Login",
+            font=("Arial", 16)
+        ).pack(pady=10)
 
-        tk.Label(self._frame, text="Username", bg="#3498db", fg="white").pack()
-        username_entry = ttk.Entry(self._frame)
+        tk.Label(frame, text="Username").pack()
+        username_entry = ttk.Entry(frame)
         username_entry.pack()
 
-        tk.Label(self._frame, text="Password", bg="#3498db", fg="white").pack()
-        password_entry = ttk.Entry(self._frame, show="*")
+        tk.Label(frame, text="Password").pack()
+        password_entry = ttk.Entry(frame, show="*")
         password_entry.pack()
 
-        ttk.Button(self._frame, text="Sign In", command=lambda: self._sign_in(
-            username_entry.get(), password_entry.get())).pack(pady=5)
-        ttk.Button(self._frame, text="Register",
-                   command=self._show_register_view).pack()
+        ttk.Button(
+            frame,
+            text="Sign In",
+            command=lambda: self._sign_in(
+                username_entry.get(),
+                password_entry.get()
+            )
+        ).pack(pady=5)
+
+        ttk.Button(
+            frame,
+            text="Register",
+            command=self._show_register_view
+        ).pack()
 
     def _sign_in(self, username, password):
-        if user_service.authenticate(username, password):
-            if self._frame:
-                self._frame.destroy()
-
-            self._frame = MainView(self._root)
-            self._frame.pack(fill="both", expand=True)
+        if not username or not password:
+            messagebox.showerror("Error", "Username and password are required")
+            return
+        if self._user_service.authenticate(username, password):
+            self._show_main_view(username)
         else:
             messagebox.showerror("Error", "Invalid username or password")
 
-    def _show_register_view(self):
-        if self._frame:
-            self._frame.destroy()
+    def _show_main_view(self, username):
+        self._clear_current_view()
 
-        self._frame = RegisterView(self._root, self.start)
-        self._frame.pack(fill="both", expand=True)
+        def logout_handler():
+            self.start()
+
+        main_view = MainView(
+            root=self._root,
+            username=username,
+            logout_handler=logout_handler
+        )
+
+        main_view.pack(fill="both", expand=True)
+        self._current_view = main_view
+
+    def _show_register_view(self):
+        """Näyttää rekisteröitymisnäkymän."""
+        self._clear_current_view()
+
+        def on_success():
+            messagebox.showinfo("Success", "User created, you can log in now")
+            self.start()
+
+        def on_cancel():
+            self.start()
+
+        register_view = RegisterView(
+            root=self._root,
+            user_service=self._user_service,
+            on_success=on_success,
+            on_cancel=on_cancel,
+        )
+
+        register_view.pack(fill="both", expand=True)
+        self._current_view = register_view

@@ -1,36 +1,73 @@
+# src/ui/register.py
+
 import tkinter as tk
 from tkinter import ttk, messagebox
-from services.user_service import user_service
 
 
 class RegisterView(tk.Frame):
-    def __init__(self, root, show_login_view):
+    def __init__(self, root, user_service, on_success, on_cancel):
         super().__init__(root, padx=10, pady=10)
-        self._show_login_view = show_login_view
 
-        tk.Label(self, text="Register", font=("Arial", 16)).pack(pady=10)
+        self._user_service = user_service
+        self._on_success = on_success
+        self._on_cancel = on_cancel
 
-        tk.Label(self, text="Username").pack()
+        title_label = tk.Label(
+            self,
+            text="Register",
+            font=("Arial", 16)
+        )
+        title_label.grid(row=0, column=0, columnspan=2, pady=(0, 10))
+
+        # Username
+        username_label = tk.Label(self, text="Username")
+        username_label.grid(row=1, column=0, sticky="w", pady=5)
+
         self._username_entry = ttk.Entry(self)
-        self._username_entry.pack()
+        self._username_entry.grid(row=1, column=1, sticky="ew", pady=5)
 
-        tk.Label(self, text="Password").pack()
+        # Password
+        password_label = tk.Label(self, text="Password")
+        password_label.grid(row=2, column=0, sticky="w", pady=5)
+
         self._password_entry = ttk.Entry(self, show="*")
-        self._password_entry.pack()
+        self._password_entry.grid(row=2, column=1, sticky="ew", pady=5)
 
-        ttk.Button(self, text="Create Account",
-                   command=self._register_user).pack(pady=5)
+        # Buttons
+        create_button = ttk.Button(
+            self,
+            text="Create account",
+            command=self._handle_create_user
+        )
+        create_button.grid(row=3, column=0, pady=(10, 0))
 
-    def _back_to_login(self):
-        self.destroy()
-        self._show_login_view()
+        cancel_button = ttk.Button(
+            self,
+            text="Back to login",
+            command=self._on_cancel
+        )
+        cancel_button.grid(row=3, column=1, pady=(10, 0))
 
-    def _register_user(self):
+        # layout joustavaksi
+        self.grid_columnconfigure(0, weight=0)
+        self.grid_columnconfigure(1, weight=1)
+
+    def _handle_create_user(self):
+        username = self._username_entry.get().strip()
+        password = self._password_entry.get().strip()
+
+        if not username or not password:
+            messagebox.showerror("Error", "Username and password are required")
+            return
+
         try:
-            user_service.create_user(
-                self._username_entry.get(), self._password_entry.get())
-            messagebox.showinfo("Success", "User created successfully!")
-            self.destroy()
-            self._show_login_view()
-        except Exception as e:
-            messagebox.showerror("Error", str(e))
+            self._user_service.create_user(username, password)
+        except ValueError:
+            messagebox.showerror("Error", "User already exists")
+            return
+        except Exception as e:  # ei pakollinen, mutta kiva fallback
+            messagebox.showerror("Error", f"Failed to create user: {e}")
+            return
+
+        # onnistui → takaisin login-näkymään
+        self._on_success()
