@@ -1,7 +1,6 @@
-import os
-import json
 import tkinter as tk
 from tkinter import messagebox
+from repositories.book_repository import BookRepository
 
 
 class MainView(tk.Frame):
@@ -10,10 +9,11 @@ class MainView(tk.Frame):
 
         self._username = username
         self._logout_handler = logout_handler
+        safe_username = self._username.replace(" ", "_")
+        file_path = f"data/{safe_username}_books.json"
 
-        self._file_path = "data/books.json"
-        self._books = []
-        self._load_books()
+        self._repository = BookRepository(file_path=file_path)
+        self._books = self._repository.get_all()
 
         title_label = tk.Label(
             self,
@@ -35,19 +35,20 @@ class MainView(tk.Frame):
 
         tk.Label(form_frame, text="Pages").grid(row=2, column=0, sticky="w")
         self._pages_entry = tk.Entry(form_frame, width=10)
-        self._pages_entry.grid(row=2, column=1, sticky="w", padx=(5, 0))
+        self._pages_entry.grid(row=2, column=1, padx=(5, 0), sticky="w")
 
         add_button = tk.Button(
             form_frame,
             text="Add book",
             command=self._handle_add_book
         )
-        add_button.grid(row=3, column=0, columnspan=2, pady=(8, 0))
+        add_button.grid(row=3, column=0, columnspan=2, pady=(10, 0), sticky="ew")
 
         list_frame = tk.Frame(self)
-        list_frame.pack(fill="both", expand=True, pady=(10, 0))
+        list_frame.pack(fill="both", expand=True)
 
-        tk.Label(list_frame, text="Books:").pack(anchor="w")
+        list_label = tk.Label(list_frame, text="Books")
+        list_label.pack(anchor="w")
 
         self._book_listbox = tk.Listbox(list_frame, width=60, height=10)
         self._book_listbox.pack(fill="both", expand=True)
@@ -68,7 +69,9 @@ class MainView(tk.Frame):
 
         if not title or not author or not pages:
             messagebox.showerror(
-                "Error", "Title, author and pages are required")
+                "Error",
+                "Title, author and pages are required"
+            )
             return
 
         try:
@@ -81,13 +84,9 @@ class MainView(tk.Frame):
             messagebox.showerror("Error", "Pages must be positive")
             return
 
-        self._books.append({
-            "title": title,
-            "author": author,
-            "pages": pages_int
-        })
+        self._repository.add_book(title, author, pages_int)
 
-        self._save_books()
+        self._books = self._repository.get_all()
         self._refresh_book_list()
 
         self._title_entry.delete(0, tk.END)
@@ -96,6 +95,7 @@ class MainView(tk.Frame):
 
     def _refresh_book_list(self):
         self._book_listbox.delete(0, tk.END)
+
         for book in self._books:
             if isinstance(book, dict):
                 title = book.get("title", "")
@@ -104,36 +104,5 @@ class MainView(tk.Frame):
                 line = f"{title} — {author} ({pages} pages)"
             else:
                 line = str(book)
+
             self._book_listbox.insert(tk.END, line)
-
-    def _load_books(self):
-        try:
-            with open(self._file_path, "r", encoding="utf-8") as file:
-                data = json.load(file)
-            if isinstance(data, list):
-                self._books = [
-                    b for b in data
-                    if isinstance(b, dict)
-                    and "title" in b
-                    and "author" in b
-                    and "pages" in b
-                ]
-            else:
-                self._books = []
-        except FileNotFoundError:
-            self._books = []
-        except json.JSONDecodeError:
-            self._books = []
-
-    def _save_books(self):
-        directory = os.path.dirname(self._file_path)
-        if directory and not os.path.exists(directory):
-            try:
-                os.makedirs(directory)
-            except OSError as e:
-                print(f"Could not create directory {directory}: {e}")
-        try:
-            with open(self._file_path, "w", encoding="utf-8") as file:
-                json.dump(self._books, file)
-        except OSError as e:
-            print(f"Failed to save books: {e}")
