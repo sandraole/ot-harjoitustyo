@@ -16,6 +16,24 @@ Toivoisin erityisesti palautetta ja parannusehdotuksia koodin laatuun ja rakente
 
 [Arkkitehtuuri](https://github.com/sandraole/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)
 
+## Asennus
+
+### Riippuvuuksien asentaminen
+
+Asenna riipuvuudet komennolla:
+
+```bash
+poetry install
+```
+
+### Vaadittavat alustustoimenpiteet
+
+Suorita alustustoimenpiteet komennolla:
+
+```bash
+poetry run invoke
+```
+
 
 ## Komentorivitoiminnot
 
