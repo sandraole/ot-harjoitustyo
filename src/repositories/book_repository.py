@@ -33,5 +33,12 @@ class BookRepository:
         self._books.append(book)
         self._save_books()
 
+    def delete_by_index(self, index: int):
+        try:
+            del self._books[index]
+            self._save_books()
+        except IndexError:
+            print(f"Invalid index {index} for delete")
+
     def get_all(self):
         return list(self._books)

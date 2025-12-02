@@ -7,8 +7,10 @@ class MainView(tk.Frame):
     def __init__(self, root, username, logout_handler):
         super().__init__(root, padx=10, pady=10)
 
+        self._root = root
         self._username = username
         self._logout_handler = logout_handler
+
         safe_username = self._username.replace(" ", "_")
         file_path = f"data/{safe_username}_books.json"
 
@@ -53,6 +55,13 @@ class MainView(tk.Frame):
         self._book_listbox = tk.Listbox(list_frame, width=60, height=10)
         self._book_listbox.pack(fill="both", expand=True)
 
+        delete_button = tk.Button(
+            list_frame,
+            text="Delete selected book",
+            command=self._handle_delete_book
+        )
+        delete_button.pack(pady=(5, 0), anchor="w")
+
         logout_button = tk.Button(
             self,
             text="Logout",
@@ -92,6 +101,26 @@ class MainView(tk.Frame):
         self._title_entry.delete(0, tk.END)
         self._author_entry.delete(0, tk.END)
         self._pages_entry.delete(0, tk.END)
+
+    def _handle_delete_book(self):
+        selection = self._book_listbox.curselection()
+        if not selection:
+            messagebox.showerror("Error", "Please select a book to delete")
+            return
+
+        index = selection[0]
+
+        confirm = messagebox.askyesno(
+            "Confirm delete",
+            "Are you sure you want to delete the selected book?"
+        )
+        if not confirm:
+            return
+
+        self._repository.delete_by_index(index)
+
+        self._books = self._repository.get_all()
+        self._refresh_book_list()
 
     def _refresh_book_list(self):
         self._book_listbox.delete(0, tk.END)
