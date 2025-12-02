@@ -11,3 +11,9 @@
 - Ajettiin pylint ja korjattiin varoitukset, pylint-arvosana nyt 10/10
 - Sovellus ei ole toiminnallisuudeltaan kehittynyt viime viikosta muiden koulukiireiden vuoksi
 
+# Viikko 5
+- Lisätty seuraavat toiminnallisuudet: käyttäjä voi lisätä kirjan, käyttäjä voi poistaa kirjan
+- Varmistettu, että json tekee käyttäjäkohtaisen tiedoston eri käyttäjille
+- Ajettu pylint ja korjattu varoitukset
+- Varmistettu, että testikattavuus on yli 40%
+- Tällä hetkellä tiedossa, että koodi tuottaa kaksi data kansiota. Yksi niistä tulee src kansion ulkopuolelle
