@@ -79,7 +79,6 @@ class UI:
         self._current_view = main_view
 
     def _show_register_view(self):
-        """Näyttää rekisteröitymisnäkymän."""
         self._clear_current_view()
 
         def on_success():
