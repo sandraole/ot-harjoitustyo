@@ -1,5 +1,5 @@
 import json
-import os
+from data.file_utils import open_for_write
 
 
 class UserService:
@@ -14,17 +14,12 @@ class UserService:
                 self._users = json.load(file)
         except FileNotFoundError:
             self._users = {}
+        except json.JSONDecodeError:
+            self._users = {}
 
     def _save_users(self):
-        directory = os.path.dirname(self._file_path)
-        if directory and not os.path.exists(directory):
-            try:
-                os.makedirs(directory)
-            except OSError as e:
-                print(f"Could not create directory {directory}: {e}")
-
         try:
-            with open(self._file_path, "w", encoding="utf-8") as file:
+            with open_for_write(self._file_path) as file:
                 json.dump(self._users, file)
         except OSError as e:
             print(f"Failed to save users: {e}")

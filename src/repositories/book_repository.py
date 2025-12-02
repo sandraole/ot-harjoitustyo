@@ -1,5 +1,5 @@
 import json
-import os
+from data.file_utils import open_for_write
 
 
 class BookRepository:
@@ -18,15 +18,8 @@ class BookRepository:
             self._books = []
 
     def _save_books(self):
-        directory = os.path.dirname(self._file_path)
-        if directory and not os.path.exists(directory):
-            try:
-                os.makedirs(directory)
-            except OSError as e:
-                print(f"Could not create directory {directory}: {e}")
-
         try:
-            with open(self._file_path, "w", encoding="utf-8") as file:
+            with open_for_write(self._file_path) as file:
                 json.dump(self._books, file)
         except OSError as e:
             print(f"Failed to save books: {e}")
