@@ -31,7 +31,7 @@ poetry install
 Suorita alustustoimenpiteet komennolla:
 
 ```bash
-poetry run invoke
+poetry run invoke build
 ```
 
 
