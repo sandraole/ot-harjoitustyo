@@ -1,3 +1,5 @@
+""""Vastaa sovelluksen pääkäyttöliittymästä."""
+
 import tkinter as tk
 from tkinter import ttk, messagebox
 from ui.main import MainView
@@ -7,20 +9,39 @@ from repositories.book_repository import BookRepository
 
 
 class UI:
+    """"Luokka joka vatsaa sovelluksen näkymisen hallinnasta.
+    
+    Vastaa kirjautuimisen, rekisteröinnin, kirjalistan näyttämisestä ja
+    vaihtamisesta.
+    
+    Attributes:
+        _root: Tkinterion pääikkuna.
+        _user_service: vastaa käyttäjiin liittyvästä logiikasta.
+        _current_view: näkyvissä oleva Tkinter ikkuna.
+    """
     def __init__(self, root, user_service):
+        """Luo uuden UI-olion.
+        
+        Args:
+            root: Tkinterin juuri ikkuna.
+            user_service: vastaa käyttäjien käsittelystä.
+        """
         self._root = root
         self._user_service = user_service
         self._current_view = None
 
     def start(self):
+        """Käynnistää käyttliittymän näyttämällä kirjautumisnäkymän."""
         self._show_login_view()
 
     def _clear_current_view(self):
+        """Tuhoaa nykyisen näkymän, jos sellainen on luotu."""
         if self._current_view is not None:
             self._current_view.destroy()
             self._current_view = None
 
     def _show_login_view(self):
+        """Näyttää kirjautumissivun."""
         self._clear_current_view()
 
         frame = tk.Frame(master=self._root, padx=10, pady=10)
@@ -57,6 +78,15 @@ class UI:
         ).pack()
 
     def _sign_in(self, username, password):
+        """Käsittelee kirjautumisnapin painamisen.
+        
+        Kursuu UserSerice.login metodia ja näyttää virheilmoituksen,
+        jos kirjauminen epäonnistuu.
+        
+        Args:
+            username: käyttäjätunnus.
+            password: salasana.
+        """
         try:
             logged_in_username = self._user_service.login(username, password)
         except ValueError as e:
@@ -66,6 +96,13 @@ class UI:
         self._show_main_view(logged_in_username)
 
     def _show_main_view(self, username):
+        """Näyttää kirjalistan kirjautuneelle käyttäjälle.
+        
+        Luo käyttäjäkohtaisen näkymän omista kirjoista.
+        
+        Args:
+            username: käyttäjätunnus.
+        """
         self._clear_current_view()
 
         def logout_handler():
@@ -88,6 +125,7 @@ class UI:
         self._current_view = main_view
 
     def _show_register_view(self):
+        """Näyttää uuden käyttäjän rekisteröintisivun."""
         self._clear_current_view()
 
         def on_success():

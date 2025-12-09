@@ -1,9 +1,34 @@
+"""Sovelluksen päänäkumä --> kirjalista."""
+
 import tkinter as tk
 from tkinter import messagebox
 
 
 class MainView(tk.Frame):
+    """"Kirjalistan näyttävä sivu.
+    
+    Näyttää kirjautuneelle käyttäjälle lomakkeen uuden kirjan lisäämisestä,
+    sekä lukemattomat, että luetut kirjat.
+    
+    Attributes:
+        _root: Tkniterin juuri.
+        _username: käyttäjätunnus.
+        _logout_handler: funktio, jota kutsutaan uloskirjautuessa.
+        _book_service: vastaa kirjojen logiikasta.
+        _books: viimeisimmät kirjat.
+        _unread_indices: lista lukemattomien kirjojen indekseistä.
+        _read_indices: lista luettujen kirjojen indekseistä.
+    """
+
     def __init__(self, root, username, logout_handler, book_service):
+        """Lue uuden MainView ikkunan.
+        
+        Args:
+            root: Tkinterin juuri.
+            username: käyttäjätunnus.
+            logout_handler: funktio, jota kututaan uloskirjautuessa.
+            book_service: vastaa kirjojen käsittelystä.
+        """
         super().__init__(root, padx=10, pady=10)
 
         self._root = root
@@ -86,6 +111,7 @@ class MainView(tk.Frame):
         self._refresh_book_list()
 
     def _handle_add_book(self):
+        """"Käsittelee uuden kirjan lisäämisen käyttöliittymästä."""
         title = self._title_entry.get()
         author = self._author_entry.get()
         pages = self._pages_entry.get()
@@ -104,6 +130,11 @@ class MainView(tk.Frame):
         self._pages_entry.delete(0, tk.END)
 
     def _handle_toggle_read(self, event):
+        """Käsittelee kaksoisklikkauksen, joka siirtää kirjan luettu-tilaan.
+        
+        Args:
+            event: Tkinterin tapahtumaolio, joka kertoo kummassa tilassa kirja on.
+        """
         widget = event.widget
 
         if widget == self._unread_listbox:
@@ -127,6 +158,7 @@ class MainView(tk.Frame):
         self._refresh_book_list()
 
     def _handle_delete_book(self):
+        """Poistaa valitun kirjan halutusta listasta."""
         selection_unread = self._unread_listbox.curselection()
         selection_read = self._read_listbox.curselection()
 
@@ -153,6 +185,7 @@ class MainView(tk.Frame):
         self._refresh_book_list()
 
     def _refresh_book_list(self):
+        """Päivittää molempien kirjojen listat."""
         self._unread_listbox.delete(0, tk.END)
         self._read_listbox.delete(0, tk.END)
         self._unread_indices = []
