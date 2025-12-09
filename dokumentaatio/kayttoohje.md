@@ -1,6 +1,6 @@
 # Käyttöohje
 
-Lataa projektin uusin [release](https://github.com/sandraole/ot-harjoitustyo/releases/tag/v1.0.1) .
+Lataa projektin uusin [release](https://github.com/sandraole/ot-harjoitustyo/releases/tag/v1.0.2) .
 
 ## Asennus
 
@@ -39,5 +39,6 @@ Luo uusi käyttäjä ja kirjaudu sisään.
 
 ## Oma kirjalista
 Lisää tai poista omia kirjoja. Voit myös merkata ne luetuksi. Käyttäjälle näkyy lukemattomat ja luetut kirjat.
+
 
 
