@@ -4,9 +4,6 @@ Book Tracker on sovellus, jonka avulla käyttäjä voi seurata lukemiaan kirjoja
 
 Sovelluksen tarkoituksena on motivoida käyttäjää lukemaan enemmän ja toimia muistilistana jo luetuista kirjoista.
 
-### Koodikatselmointi
-Toivoisin erityisesti palautetta ja parannusehdotuksia koodin laatuun ja rakenteeseen. Tiedostan, että tällä hetkellä tieotojen tallentaminen synnyttää kaksi data kansiota. Src kansion ulkopuolinen data kansio on se ei toivottu. Tämä on työn alla.
-
 ## Dokumentaatio
 [Vaatimusmäärittely](https://github.com/sandraole/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
 
@@ -17,6 +14,8 @@ Toivoisin erityisesti palautetta ja parannusehdotuksia koodin laatuun ja rakente
 [Arkkitehtuuri](https://github.com/sandraole/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)
 
 [Release](https://github.com/sandraole/ot-harjoitustyo/releases/tag/v1.0.0)
+
+[Käyttöohje](https://github.com/sandraole/ot-harjoitustyo/blob/master/dokumentaatio/kayttoohje.md)
 
 ## Asennus
 
