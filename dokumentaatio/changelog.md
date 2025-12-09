@@ -26,8 +26,9 @@
 - Pyritty siistimään koodin laatua
 - Koodikatselmointi tehty
 - Luotu uusia testejä
-- Docstring-dokumentointi tehty suurimalle osalle koodista
+- Docstring-dokumentointi tehty
 - Laadittu alustava käyttöohje
 - Julkaistu uusin release
   
+
 
