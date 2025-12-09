@@ -31,26 +31,12 @@ Ohjelman voi käynnistää komennolla:
 poetry run invoke start
 ```
 
-### Ohjelman testaaminen
+## Kirjautuminen
+Sovellus käynnistyy kirjautumisnäkymään
 
-Ohjelman testit voidaan suorittaa komennolla:
+## Luo uusi käyttäjä
+Luo uusi käyttäjä ja kirjaudu sisään
 
-```bash
-poetry run invoke test
-```
+## Oma kirjalista
+Lisää tai poista omia kirjoja. Voit myös merkata ne luetuksi. Käyttäjälle näkyy lukemattomat ja luetut kirjat.
 
-### Testikattavuuden selvittäminen
-
-Testikatavuusraportin voi suorittaa komennolla:
-
-```bash
-poetry run invoke coverage-report
-```
-
-### Pylint
-
-Projektin .pylintrc-tiedostossa määritellyt tarkistukset voi suorittaa komennolla:
-
-```bash
-poetry run invoke lint
-```
