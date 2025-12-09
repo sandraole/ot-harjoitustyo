@@ -1,5 +1,3 @@
-# src/ui/register.py
-
 import tkinter as tk
 from tkinter import ttk, messagebox
 
@@ -19,21 +17,18 @@ class RegisterView(tk.Frame):
         )
         title_label.grid(row=0, column=0, columnspan=2, pady=(0, 10))
 
-        # Username
         username_label = tk.Label(self, text="Username")
         username_label.grid(row=1, column=0, sticky="w", pady=5)
 
         self._username_entry = ttk.Entry(self)
         self._username_entry.grid(row=1, column=1, sticky="ew", pady=5)
 
-        # Password
         password_label = tk.Label(self, text="Password")
         password_label.grid(row=2, column=0, sticky="w", pady=5)
 
         self._password_entry = ttk.Entry(self, show="*")
         self._password_entry.grid(row=2, column=1, sticky="ew", pady=5)
 
-        # Buttons
         create_button = ttk.Button(
             self,
             text="Create account",
@@ -48,7 +43,6 @@ class RegisterView(tk.Frame):
         )
         cancel_button.grid(row=3, column=1, pady=(10, 0))
 
-        # layout joustavaksi
         self.grid_columnconfigure(0, weight=0)
         self.grid_columnconfigure(1, weight=1)
 
@@ -65,9 +59,8 @@ class RegisterView(tk.Frame):
         except ValueError:
             messagebox.showerror("Error", "User already exists")
             return
-        except Exception as e:  # ei pakollinen, mutta kiva fallback
+        except Exception as e:
             messagebox.showerror("Error", f"Failed to create user: {e}")
             return
 
-        # onnistui → takaisin login-näkymään
         self._on_success()
