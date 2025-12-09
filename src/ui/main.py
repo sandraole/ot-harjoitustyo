@@ -41,7 +41,8 @@ class MainView(tk.Frame):
             text="Add book",
             command=self._handle_add_book
         )
-        add_button.grid(row=3, column=0, columnspan=2, pady=(10, 0), sticky="ew")
+        add_button.grid(row=3, column=0, columnspan=2,
+                        pady=(10, 0), sticky="ew")
 
         list_frame = tk.Frame(self)
         list_frame.pack(fill="both", expand=True)
@@ -64,7 +65,8 @@ class MainView(tk.Frame):
         self._read_listbox = tk.Listbox(read_frame, width=60, height=8)
         self._read_listbox.pack(fill="both", expand=True)
 
-        self._unread_listbox.bind("<Double-Button-1>", self._handle_toggle_read)
+        self._unread_listbox.bind(
+            "<Double-Button-1>", self._handle_toggle_read)
         self._read_listbox.bind("<Double-Button-1>", self._handle_toggle_read)
 
         delete_button = tk.Button(
