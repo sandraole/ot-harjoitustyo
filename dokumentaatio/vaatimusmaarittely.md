@@ -16,8 +16,8 @@ Myöhemmin sovellusta voidaan laajentaa myös useammalle käyttäjälle.
 - Käyttäjä voi kirjautua omalle sivulleen omalla käyttäjätunnuksella. (Tehty)
 - Käyttäjä voi lisätä uuden kirjan listalle (nimi, kirjailija, sivumääärä) (Tehty)
 - Käyttäjä voi poistaa kirjan. (Tehty)
-- Käyttäjä voi merkitä kirjan luetuksi.
-- Käyttäjä voi nähdä kaikki kirjat (eritelty luettuihin ja lukemattomiin)
+- Käyttäjä voi merkitä kirjan luetuksi. (Tehty)
+- Käyttäjä voi nähdä kaikki kirjat (eritelty luettuihin ja lukemattomiin) (Tehty)
 - Sovellus osaa laskea ja näyttää:
   - luettujen kirjojen määrän
   - kokonaismäärän kaikista kirjoista
@@ -40,6 +40,7 @@ Myöhemmin sovellusta voidaan laajentaa myös useammalle käyttäjälle.
 - Poista kirja
 - Näytä tilastot
 - Kirjaudu ulos
+
 
 
 
