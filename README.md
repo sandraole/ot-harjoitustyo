@@ -13,7 +13,7 @@ Sovelluksen tarkoituksena on motivoida käyttäjää lukemaan enemmän ja toimia
 
 [Arkkitehtuuri](https://github.com/sandraole/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)
 
-[Release](https://github.com/sandraole/ot-harjoitustyo/releases/tag/v1.0.1)
+[Release](https://github.com/sandraole/ot-harjoitustyo/releases/tag/v1.0.2)
 
 [Käyttöohje](https://github.com/sandraole/ot-harjoitustyo/blob/master/dokumentaatio/kayttoohje.md)
 
