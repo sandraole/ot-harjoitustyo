@@ -16,6 +16,7 @@ Sovelluksen alustava logiikka --> tarkentuu toiminnallisuuden lisääntyessä
 ```
 
 # Sekvenssikaavio
+Kirjan lissäminen:
 
 ```mermaid
 sequenceDiagram
@@ -24,17 +25,17 @@ sequenceDiagram
     participant BS as BookService
     participant BR as BookRepository
 
-    User->>MV: click "Add book"\n(syöttää title, author, pages)
-    MV->>BS: add_book(title, author, pages_str)
+    User->>MV: click "Add book" (syöttää title, author, pages)
+    MV->>BS: add_book(title, author, pages)
 
-    BS->>BS: strip + validointi\n(tyhjät, integer, > 0)
+    BS->>BS: strip + validointi (tyhjät, integer, > 0)
 
     alt syöte virheellinen
         BS-->>MV: ValueError (virheviesti)
         MV->>User: messagebox.showerror(...)
     else syöte ok
         BS->>BR: add_book(title, author, pages)
-        BR->>BR: lisää kirja listaan\nja tallentaa JSON-tiedostoon
+        BR->>BR: lisää kirja listaan ja tallentaa JSON-tiedostoon
         BR-->>BS: ok
         BS-->>MV: ok
 
@@ -45,5 +46,6 @@ sequenceDiagram
         MV->>MV: _refresh_book_list()
     end
 ```
+
 
 
