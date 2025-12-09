@@ -22,7 +22,7 @@
 - Lisätty seuraavat toiminnallisuudet: käyttäjä voi merkata kirjan luetuksi ja käyttäjä näkee erikseen lukemattomat ja luetut kirjat. Käyttäjä voi kaksoisklikkaamalla kirjaa vaikuttaa kirjan sijaintiin.
 - Varmistettu, että testikattavuus on yli 60 %
 - Sovelluslogiikka siirretty pois käyttöliittymäkoodista
-- Sekvenssikaavio lisätty ja arkkitehtuuri tiedostoon lisätty alustava arkkitehtuurikuvaus
+- Sekvenssikaavio lisätty
 - Pyritty siistimään koodin laatua
 - Koodikatselmointi tehty
 - Luotu uusia testejä
@@ -30,3 +30,4 @@
 - Laadittu alustava käyttöohje
 - Julkaistu uusin release
   
+
