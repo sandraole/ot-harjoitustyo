@@ -1,21 +1,16 @@
 import tkinter as tk
 from tkinter import messagebox
-from repositories.book_repository import BookRepository
 
 
 class MainView(tk.Frame):
-    def __init__(self, root, username, logout_handler):
+    def __init__(self, root, username, logout_handler, book_service):
         super().__init__(root, padx=10, pady=10)
 
         self._root = root
         self._username = username
         self._logout_handler = logout_handler
-
-        safe_username = self._username.replace(" ", "_")
-        file_path = f"data/{safe_username}_books.json"
-
-        self._repository = BookRepository(file_path=file_path)
-        self._books = self._repository.get_all()
+        self._book_service = book_service
+        self._books = self._book_service.get_books()
 
         title_label = tk.Label(
             self,
@@ -72,30 +67,17 @@ class MainView(tk.Frame):
         self._refresh_book_list()
 
     def _handle_add_book(self):
-        title = self._title_entry.get().strip()
-        author = self._author_entry.get().strip()
-        pages = self._pages_entry.get().strip()
-
-        if not title or not author or not pages:
-            messagebox.showerror(
-                "Error",
-                "Title, author and pages are required"
-            )
-            return
+        title = self._title_entry.get()
+        author = self._author_entry.get()
+        pages = self._pages_entry.get()
 
         try:
-            pages_int = int(pages)
-        except ValueError:
-            messagebox.showerror("Error", "Pages must be a number")
+            self._book_service.add_book(title, author, pages)
+        except ValueError as e:
+            messagebox.showerror("Error", str(e))
             return
 
-        if pages_int <= 0:
-            messagebox.showerror("Error", "Pages must be positive")
-            return
-
-        self._repository.add_book(title, author, pages_int)
-
-        self._books = self._repository.get_all()
+        self._books = self._book_service.get_books()
         self._refresh_book_list()
 
         self._title_entry.delete(0, tk.END)
@@ -108,8 +90,6 @@ class MainView(tk.Frame):
             messagebox.showerror("Error", "Please select a book to delete")
             return
 
-        index = selection[0]
-
         confirm = messagebox.askyesno(
             "Confirm delete",
             "Are you sure you want to delete the selected book?"
@@ -117,9 +97,11 @@ class MainView(tk.Frame):
         if not confirm:
             return
 
-        self._repository.delete_by_index(index)
+        index = selection[0]
 
-        self._books = self._repository.get_all()
+        self._book_service.delete_book(index)
+
+        self._books = self._book_service.get_books()
         self._refresh_book_list()
 
     def _refresh_book_list(self):

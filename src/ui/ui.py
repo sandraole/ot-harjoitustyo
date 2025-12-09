@@ -2,6 +2,8 @@ import tkinter as tk
 from tkinter import ttk, messagebox
 from ui.main import MainView
 from ui.register import RegisterView
+from services.book_service import BookService
+from repositories.book_repository import BookRepository
 
 
 class UI:
@@ -55,13 +57,13 @@ class UI:
         ).pack()
 
     def _sign_in(self, username, password):
-        if not username or not password:
-            messagebox.showerror("Error", "Username and password are required")
+        try:
+            logged_in_username = self._user_service.login(username, password)
+        except ValueError as e:
+            messagebox.showerror("Error", str(e))
             return
-        if self._user_service.authenticate(username, password):
-            self._show_main_view(username)
-        else:
-            messagebox.showerror("Error", "Invalid username or password")
+
+        self._show_main_view(logged_in_username)
 
     def _show_main_view(self, username):
         self._clear_current_view()
@@ -69,10 +71,17 @@ class UI:
         def logout_handler():
             self.start()
 
+        safe_username = username.replace(" ", "_")
+        file_path = f"data/{safe_username}_books.json"
+
+        book_repository = BookRepository(file_path=file_path)
+        book_service = BookService(book_repository=book_repository)
+
         main_view = MainView(
             root=self._root,
             username=username,
-            logout_handler=logout_handler
+            logout_handler=logout_handler,
+            book_service=book_service,
         )
 
         main_view.pack(fill="both", expand=True)

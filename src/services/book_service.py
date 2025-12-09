@@ -25,3 +25,6 @@ class BookService:
 
     def get_books(self):
         return self._book_repository.get_all()
+
+    def delete_book(self, index: int):
+        self._book_repository.delete_by_index(index)

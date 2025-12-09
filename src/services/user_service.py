@@ -25,10 +25,29 @@ class UserService:
             print(f"Failed to save users: {e}")
 
     def create_user(self, username, password):
+        username = username.strip()
+        password = password.strip()
+
+        if not username or not password:
+            raise ValueError("Username and password are required")
+
         if username in self._users:
             raise ValueError("User already exists")
+
         self._users[username] = password
         self._save_users()
 
     def authenticate(self, username, password):
         return self._users.get(username) == password
+
+    def login(self, username, password):
+        username = username.strip()
+        password = password.strip()
+
+        if not username or not password:
+            raise ValueError("Username and password are required")
+
+        if self._users.get(username) != password:
+            raise ValueError("Invalid username or password")
+
+        return username
