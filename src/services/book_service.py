@@ -28,3 +28,6 @@ class BookService:
 
     def delete_book(self, index: int):
         self._book_repository.delete_by_index(index)
+
+    def toggle_book_read(self, index: int):
+        self._book_repository.toggle_read_status(index)

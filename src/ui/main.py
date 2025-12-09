@@ -11,6 +11,8 @@ class MainView(tk.Frame):
         self._logout_handler = logout_handler
         self._book_service = book_service
         self._books = self._book_service.get_books()
+        self._unread_indices = []
+        self._read_indices = []
 
         title_label = tk.Label(
             self,
@@ -44,11 +46,26 @@ class MainView(tk.Frame):
         list_frame = tk.Frame(self)
         list_frame.pack(fill="both", expand=True)
 
-        list_label = tk.Label(list_frame, text="Books")
-        list_label.pack(anchor="w")
+        unread_frame = tk.Frame(list_frame)
+        unread_frame.pack(fill="both", expand=True, pady=(0, 5))
 
-        self._book_listbox = tk.Listbox(list_frame, width=60, height=10)
-        self._book_listbox.pack(fill="both", expand=True)
+        unread_label = tk.Label(unread_frame, text="Unread books")
+        unread_label.pack(anchor="w")
+
+        self._unread_listbox = tk.Listbox(unread_frame, width=60, height=8)
+        self._unread_listbox.pack(fill="both", expand=True)
+
+        read_frame = tk.Frame(list_frame)
+        read_frame.pack(fill="both", expand=True, pady=(5, 0))
+
+        read_label = tk.Label(read_frame, text="Read books")
+        read_label.pack(anchor="w")
+
+        self._read_listbox = tk.Listbox(read_frame, width=60, height=8)
+        self._read_listbox.pack(fill="both", expand=True)
+
+        self._unread_listbox.bind("<Double-Button-1>", self._handle_toggle_read)
+        self._read_listbox.bind("<Double-Button-1>", self._handle_toggle_read)
 
         delete_button = tk.Button(
             list_frame,
@@ -84,9 +101,40 @@ class MainView(tk.Frame):
         self._author_entry.delete(0, tk.END)
         self._pages_entry.delete(0, tk.END)
 
+    def _handle_toggle_read(self, event):
+        widget = event.widget
+
+        if widget == self._unread_listbox:
+            selection = self._unread_listbox.curselection()
+            if not selection:
+                return
+            list_index = selection[0]
+            book_index = self._unread_indices[list_index]
+        elif widget == self._read_listbox:
+            selection = self._read_listbox.curselection()
+            if not selection:
+                return
+            list_index = selection[0]
+            book_index = self._read_indices[list_index]
+        else:
+            return
+
+        self._book_service.toggle_book_read(book_index)
+
+        self._books = self._book_service.get_books()
+        self._refresh_book_list()
+
     def _handle_delete_book(self):
-        selection = self._book_listbox.curselection()
-        if not selection:
+        selection_unread = self._unread_listbox.curselection()
+        selection_read = self._read_listbox.curselection()
+
+        if selection_unread:
+            list_index = selection_unread[0]
+            book_index = self._unread_indices[list_index]
+        elif selection_read:
+            list_index = selection_read[0]
+            book_index = self._read_indices[list_index]
+        else:
             messagebox.showerror("Error", "Please select a book to delete")
             return
 
@@ -97,23 +145,31 @@ class MainView(tk.Frame):
         if not confirm:
             return
 
-        index = selection[0]
-
-        self._book_service.delete_book(index)
+        self._book_service.delete_book(book_index)
 
         self._books = self._book_service.get_books()
         self._refresh_book_list()
 
     def _refresh_book_list(self):
-        self._book_listbox.delete(0, tk.END)
+        self._unread_listbox.delete(0, tk.END)
+        self._read_listbox.delete(0, tk.END)
+        self._unread_indices = []
+        self._read_indices = []
 
-        for book in self._books:
+        for i, book in enumerate(self._books):
             if isinstance(book, dict):
                 title = book.get("title", "")
                 author = book.get("author", "")
                 pages = book.get("pages", "")
+                read = book.get("read", False)
                 line = f"{title} — {author} ({pages} pages)"
             else:
+                read = False
                 line = str(book)
 
-            self._book_listbox.insert(tk.END, line)
+            if read:
+                self._read_indices.append(i)
+                self._read_listbox.insert(tk.END, line)
+            else:
+                self._unread_indices.append(i)
+                self._unread_listbox.insert(tk.END, line)

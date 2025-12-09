@@ -17,6 +17,10 @@ class BookRepository:
         except json.JSONDecodeError:
             self._books = []
 
+        for book in self._books:
+            if isinstance(book, dict) and "read" not in book:
+                book["read"] = False
+
     def _save_books(self):
         try:
             with open_for_write(self._file_path) as file:
@@ -28,7 +32,8 @@ class BookRepository:
         book = {
             "title": title,
             "author": author,
-            "pages": pages
+            "pages": pages,
+            "read": False,
         }
         self._books.append(book)
         self._save_books()
@@ -39,6 +44,35 @@ class BookRepository:
             self._save_books()
         except IndexError:
             print(f"Invalid index {index} for delete")
+
+    def set_read_status(self, index: int, read: bool):
+        try:
+            book = self._books[index]
+        except IndexError:
+            print(f"Invalid index {index} for set_read_status")
+            return
+
+        if not isinstance(book, dict):
+            print(f"Invalid book type at index {index}")
+            return
+
+        book["read"] = read
+        self._save_books()
+
+    def toggle_read_status(self, index: int):
+        try:
+            book = self._books[index]
+        except IndexError:
+            print(f"Invalid index {index} for toggle_read_status")
+            return
+
+        if not isinstance(book, dict):
+            print(f"Invalid book type at index {index}")
+            return
+
+        current = book.get("read", False)
+        book["read"] = not current
+        self._save_books()
 
     def get_all(self):
         return list(self._books)
