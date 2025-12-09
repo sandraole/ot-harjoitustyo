@@ -17,3 +17,16 @@
 - Ajettu pylint ja korjattu varoitukset
 - Varmistettu, että testikattavuus on yli 40%
 - Tällä hetkellä tiedossa, että koodi tuottaa kaksi data kansiota. Yksi niistä tulee src kansion ulkopuolelle
+
+# Viikko 6
+- Lisätty seuraavat toiminnallisuudet: käyttäjä voi merkata kirjan luetuksi ja käyttäjä näkee erikseen lukemattomat ja luetut kirjat. Käyttäjä voi kaksoisklikkaamalla kirjaa vaikuttaa kirjan sijaintiin.
+- Varmistettu, että testikattavuus on yli 60 %
+- Sovelluslogiikka siirretty pois käyttöliittymäkoodista
+- Sekvenssikaavio lisätty ja arkkitehtuuri tiedostoon lisätty alustava arkkitehtuurikuvaus
+- Pyritty siistimään koodin laatua
+- Koodikatselmointi tehty
+- Luotu uusia testejä
+- Docstring-dokumentointi tehty suurimalle osalle koodista
+- Laadittu alustava käyttöohje
+- Julkaistu uusin release
+  
