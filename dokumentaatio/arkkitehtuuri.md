@@ -17,6 +17,7 @@ Sovelluksen alustava logiikka --> tarkentuu toiminnallisuuden lisääntyessä
 
 # Sekvenssikaavio
 
+```mermaid
 sequenceDiagram
     actor User
     participant MV as MainView
@@ -43,5 +44,6 @@ sequenceDiagram
         BS-->>MV: lista kirjoista
         MV->>MV: _refresh_book_list()
     end
+```
 
 
