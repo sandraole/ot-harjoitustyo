@@ -16,7 +16,7 @@ Sovelluksen alustava logiikka --> tarkentuu toiminnallisuuden lisääntyessä
 ```
 
 # Sekvenssikaavio
-Kirjan lissäminen:
+Kirjan lisääminen:
 
 ```mermaid
 sequenceDiagram
@@ -46,6 +46,7 @@ sequenceDiagram
         MV->>MV: _refresh_book_list()
     end
 ```
+
 
 
 
