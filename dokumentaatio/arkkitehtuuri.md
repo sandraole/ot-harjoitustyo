@@ -1,18 +1,39 @@
 # Sovelluslogiikka
 
-Sovelluksen alustava logiikka --> tarkentuu toiminnallisuuden lisääntyessä
+Sovelluksessa on kolmitasoinen kerrosarkkitehtuuri:
+- UI-kerros näyttää Tkninter käyttöliittymän
+- Sevices-kerros sisältää käyttäjiin ja kirjoihin liittyvän sovelluslogiikan
+- Repositories-kerros tallentaa kirjat JSON-tiedostoihin
+
+Käyttöliittymä kutsuu vain service-luokkia ja service-luokat hoitavat tiedostonkäsittelyn repository-luokkien kautta.
 
 ```mermaid
- classDiagram
-      UserService "*" --> "1" User
-      class User{
-          username
-          password
-      }
-      class UserService{
-          file_path
-          users
-      }
+classDiagram
+    class UserService{
+        _file_path
+        _users
+        create_user(username, password)
+        login(username, password)
+        authenticate(username, password)
+    }
+
+    class BookService{
+        add_book(title, author, pages_str)
+        get_books()
+        delete_book(index)
+        toggle_book_read(index)
+    }
+
+    class BookRepository{
+        _file_path
+        _books
+        add_book(...)
+        delete_by_index(index)
+        toggle_read_status(index)
+        get_all()
+    }
+
+    BookService --> BookRepository
 ```
 
 # Sekvenssikaavio
@@ -46,6 +67,7 @@ sequenceDiagram
         MV->>MV: _refresh_book_list()
     end
 ```
+
 
 
 
