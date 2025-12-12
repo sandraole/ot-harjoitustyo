@@ -18,7 +18,7 @@ Myöhemmin sovellusta voidaan laajentaa myös useammalle käyttäjälle.
 - Käyttäjä voi poistaa kirjan. (Tehty)
 - Käyttäjä voi merkitä kirjan luetuksi. (Tehty)
 - Käyttäjä voi nähdä kaikki kirjat (eritelty luettuihin ja lukemattomiin) (Tehty)
-- Sovellus osaa laskea ja näyttää:
+- Sovellus osaa laskea ja näyttää: (Tehty)
   - luettujen kirjojen määrän
   - kokonaismäärän kaikista kirjoista
   - luettujen sivujen prosenttiosuuden
@@ -40,6 +40,7 @@ Myöhemmin sovellusta voidaan laajentaa myös useammalle käyttäjälle.
 - Poista kirja
 - Näytä tilastot
 - Kirjaudu ulos
+
 
 
 
