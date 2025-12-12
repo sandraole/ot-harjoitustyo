@@ -22,7 +22,7 @@ Myöhemmin sovellusta voidaan laajentaa myös useammalle käyttäjälle.
   - luettujen kirjojen määrän
   - kokonaismäärän kaikista kirjoista
   - luettujen sivujen prosenttiosuuden
-- Käyttäjän kirjalista tallennetaan tietokantaan/tiedostoon, jotta tiedot säilyvät ohjelman sulkemisen jälkeen.
+- Käyttäjän kirjalista tallennetaan tietokantaan/tiedostoon, jotta tiedot säilyvät ohjelman sulkemisen jälkeen. (Tehty)
   
 ### Jatkokehitysideat
 - Kirjojen lajittelu kirjailijan, nimen tai sivumäärän mukaan.
@@ -40,6 +40,7 @@ Myöhemmin sovellusta voidaan laajentaa myös useammalle käyttäjälle.
 - Poista kirja
 - Näytä tilastot
 - Kirjaudu ulos
+
 
 
 
