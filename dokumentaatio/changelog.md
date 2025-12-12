@@ -29,6 +29,6 @@
 - Docstring-dokumentointi tehty
 - Laadittu alustava käyttöohje
 - Julkaistu uusin release
-  
+- Käyttäjä näkee kuinka monta kirjaa on olemassa, montako niistä on luettu ja luettujen sivujen prosenttimäärän
 
 
