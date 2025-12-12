@@ -90,8 +90,7 @@ class MainView(tk.Frame):
         self._read_listbox = tk.Listbox(read_frame, width=60, height=8)
         self._read_listbox.pack(fill="both", expand=True)
 
-        self._unread_listbox.bind(
-            "<Double-Button-1>", self._handle_toggle_read)
+        self._unread_listbox.bind("<Double-Button-1>", self._handle_toggle_read)
         self._read_listbox.bind("<Double-Button-1>", self._handle_toggle_read)
 
         delete_button = tk.Button(
@@ -107,6 +106,17 @@ class MainView(tk.Frame):
             command=self._logout_handler
         )
         logout_button.pack(pady=(10, 0), anchor="w")
+
+        stats_frame = tk.Frame(self)
+        stats_frame.pack(pady=(10, 0), anchor="w")
+
+        self._read_count_var = tk.StringVar()
+        self._total_count_var = tk.StringVar()
+        self._read_percentage_var = tk.StringVar()
+
+        tk.Label(stats_frame, textvariable=self._read_count_var).pack(anchor="w")
+        tk.Label(stats_frame, textvariable=self._total_count_var).pack(anchor="w")
+        tk.Label(stats_frame, textvariable=self._read_percentage_var).pack(anchor="w")
 
         self._refresh_book_list()
 
@@ -208,3 +218,15 @@ class MainView(tk.Frame):
             else:
                 self._unread_indices.append(i)
                 self._unread_listbox.insert(tk.END, line)
+
+        self._refresh_statistics()
+
+    def _refresh_statistics(self):
+        """Päivittää tilastotekstien sisällön."""
+        stats = self._book_service.get_statistics()
+
+        self._read_count_var.set(f"Read books: {stats['read_books']}")
+        self._total_count_var.set(f"Total books: {stats['total_books']}")
+        self._read_percentage_var.set(
+            f"Read pages: {stats['read_page_percentage']:.1f}%"
+        )

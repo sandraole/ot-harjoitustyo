@@ -1,9 +1,26 @@
+"""Rekisteröintisivu uuden käyttäjän luomista varten"""
+
 import tkinter as tk
 from tkinter import ttk, messagebox
 
 
 class RegisterView(tk.Frame):
+    """Näyttää lomakkeen uuden käyttäjän luomista varten.
+    
+    Attribute:
+        _user_service: vastaa käyttäjän logiikasta
+        _on_success: funktio, jota kutsutaan kun käyttäjä on luotu
+        _on_cancel: funktio, jota kutsutaan kun palataan takaisin kirjautumisisvulle
+    """
+
     def __init__(self, root, user_service, on_success, on_cancel):
+        """"Luo rekisterlintisivun.
+        
+        Args: root: Tkinterin juuri
+        user_service: vastaa käyttäjien käsittelystä
+        on_success: funktio, jota kutsutaan kun käyttäjän luominen onnistuu
+        on_cancel: funktio, jota kutsutaan kun käyttäjä palaa takaisin
+        """
         super().__init__(root, padx=10, pady=10)
 
         self._user_service = user_service
@@ -47,6 +64,12 @@ class RegisterView(tk.Frame):
         self.grid_columnconfigure(1, weight=1)
 
     def _handle_create_user(self):
+        """"On vastuussa uuden käyttäjän luomisesta.
+        
+        Jos kentät ovat tyhjiä, käyttäjä on jo olemassa tai käyttäjän
+        luominen epäonnistuu --> näyttää virheilmoituksen.
+        Kutsuu _on_success-callbackia, kun käyttäjän luominen onnistuu.
+        """
         username = self._username_entry.get().strip()
         password = self._password_entry.get().strip()
 
