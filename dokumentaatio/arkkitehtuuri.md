@@ -18,7 +18,7 @@ Koostuu kolmesta näkymästä:
 - Register - uuden käyttäjätunnuksen luominen
 - Main - kirjautuneen käyttäjän kirjalista
 
-UI-luokka vastaa näkymien näyttämisestä ja vaihtamisesta. Jokainen näkumä on oma Tkinkter-luokka. Ne eivät tee tiedostokäsittelyä, vaan kutsuvat palveluluokkia.
+UI-luokka vastaa näkymien näyttämisestä ja vaihtamisesta. Jokainen näkymä on oma Tkinkter-luokka. Ne eivät tee tiedostokäsittelyä, vaan kutsuvat palveluluokkia.
 
 Main-näkymä:
 - Näyttää lomakkeen uuden kirjan lisäämistä varten
@@ -124,6 +124,7 @@ Sovellus käyttää ulkoista kirjastoa matplotlib:
 ## Sovelluksen heikkoudet
 
 - Sovellus tallentaa tiedot JSON-tiedostoihin. Sovelluksen laajentuessa tai kirjamäärn kasvaessa se ei ole enää optimaalisin tapa tallentaa tietoa.
+
 
 
 
