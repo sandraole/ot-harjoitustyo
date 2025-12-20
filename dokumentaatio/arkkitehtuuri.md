@@ -59,7 +59,7 @@ classDiagram
         get_all()
     }
 
-    UserService --> "JSON file" 
+    UserService --> JSON file 
     BookService --> BookRepository
 ```
 
@@ -124,6 +124,7 @@ Sovellus käyttää ulkoista kirjastoa matplotlib:
 ## Sovelluksen heikkoudet
 
 - Sovellus tallentaa tiedot JSON-tiedostoihin. Sovelluksen laajentuessa tai kirjamäärn kasvaessa se ei ole enää optimaalisin tapa tallentaa tietoa.
+
 
 
 
