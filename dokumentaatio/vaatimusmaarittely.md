@@ -13,7 +13,7 @@ Useita käyttäjätunnuksia voidaan luoda, ja jokaisella käyttäjällä on oma,
 
 Sovellus koostuu kolmesta näkymästä:
 - Login - kirjautuminen sovellukseen tai siirtyminen rekisteröitymiseen
-- Register - uuden käyttäjätunnuksne luominen
+- Register - uuden käyttäjätunnuksen luominen
 - Main - kirjautuneen käyttäjän oma kirjalista ja tilastot
 
 Sovellus käynnistyy "Login" näkymään ja onnistuneen kirjautumisen jälkeen käyttäjä siirtyy omaan kirjalista näkymään.
@@ -79,6 +79,7 @@ Seuraavia toiminnallisuuksia ei ole vielä toteutettu, mutta ne olisi mahdollist
 - Lukemistavoitteen asettaminen
 - Useampi käyttäjärooli, joilla erilaiset oikeudet
 - Kirjojen tietojen muokkaaminen jälkikäteen
+
 
 
 
