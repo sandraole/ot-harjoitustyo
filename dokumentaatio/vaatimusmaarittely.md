@@ -25,7 +25,8 @@ Myöhemmin sovellusta voidaan laajentaa myös useammalle käyttäjälle.
 - Käyttäjän kirjalista tallennetaan tietokantaan/tiedostoon, jotta tiedot säilyvät ohjelman sulkemisen jälkeen. (Tehty)
   
 ### Jatkokehitysideat
-- Search bar (Tehty)
+- Search bar. (Tehty)
+- Käyttäjä voi tarkastella lukemansa ja lukemattomat sivut pylväsdiagrammissa matplotlib-kirjaston avulla. (Tehty)
 - Kirjojen lajittelu kirjailijan, nimen tai sivumäärän mukaan.
 - Mahdollisuus arvostella luettu kirja.
 - Lukemistavoitteen asettaminen.
@@ -38,6 +39,7 @@ Myöhemmin sovellusta voidaan laajentaa myös useammalle käyttäjälle.
 - Poista kirja
 - Näytä tilastot
 - Kirjaudu ulos
+
 
 
 
