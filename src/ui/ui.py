@@ -11,18 +11,19 @@ from ui.theme import BG, CARD_BG, BORDER
 
 class UI:
     """"Luokka joka vatsaa sovelluksen näkymisen hallinnasta.
-    
+
     Vastaa kirjautuimisen, rekisteröinnin, kirjalistan näyttämisestä ja
     vaihtamisesta.
-    
+
     Attributes:
         _root: Tkinterion pääikkuna.
         _user_service: vastaa käyttäjiin liittyvästä logiikasta.
         _current_view: näkyvissä oleva Tkinter ikkuna.
     """
+
     def __init__(self, root, user_service):
         """Luo uuden UI-olion.
-        
+
         Args:
             root: Tkinterin juuri ikkuna.
             user_service: vastaa käyttäjien käsittelystä.
@@ -69,13 +70,15 @@ class UI:
         )
         title_label.grid(row=0, column=0, columnspan=2, pady=(0, 15))
 
-        username_label = tk.Label(card, text="Username", bg=CARD_BG, fg="black")
+        username_label = tk.Label(
+            card, text="Username", bg=CARD_BG, fg="black")
         username_label.grid(row=1, column=0, sticky="w", pady=5)
 
         username_entry = ttk.Entry(card, width=25)
         username_entry.grid(row=1, column=1, pady=5, padx=(8, 0))
 
-        password_label = tk.Label(card, text="Password", bg=CARD_BG, fg="black")
+        password_label = tk.Label(
+            card, text="Password", bg=CARD_BG, fg="black")
         password_label.grid(row=2, column=0, sticky="w", pady=5)
 
         password_entry = ttk.Entry(card, show="*", width=25)
@@ -103,10 +106,10 @@ class UI:
 
     def _sign_in(self, username, password):
         """Käsittelee kirjautumisnapin painamisen.
-        
+
         Kursuu UserSerice.login metodia ja näyttää virheilmoituksen,
         jos kirjauminen epäonnistuu.
-        
+
         Args:
             username: käyttäjätunnus.
             password: salasana.
@@ -121,9 +124,9 @@ class UI:
 
     def _show_main_view(self, username):
         """Näyttää kirjalistan kirjautuneelle käyttäjälle.
-        
+
         Luo käyttäjäkohtaisen näkymän omista kirjoista.
-        
+
         Args:
             username: käyttäjätunnus.
         """

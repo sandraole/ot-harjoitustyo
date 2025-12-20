@@ -7,10 +7,10 @@ from ui.theme import BG, CARD_BG, BORDER, LINK
 
 class MainView(tk.Frame):
     """"Kirjalistan näyttävä sivu.
-    
+
     Näyttää kirjautuneelle käyttäjälle lomakkeen uuden kirjan lisäämisestä,
     sekä lukemattomat, että luetut kirjat.
-    
+
     Attributes:
         _root: Tkniterin juuri.
         _username: käyttäjätunnus.
@@ -23,7 +23,7 @@ class MainView(tk.Frame):
 
     def __init__(self, root, username, logout_handler, book_service):
         """Lue uuden MainView ikkunan.
-        
+
         Args:
             root: Tkinterin juuri.
             username: käyttäjätunnus.
@@ -39,6 +39,9 @@ class MainView(tk.Frame):
         self._books = self._book_service.get_books()
         self._unread_indices = []
         self._read_indices = []
+
+        self._search_var = tk.StringVar()
+        self._current_filter = ""
 
         title_label = tk.Label(
             self,
@@ -69,13 +72,15 @@ class MainView(tk.Frame):
             row=1, column=0, sticky="w", pady=(5, 0)
         )
         self._author_entry = tk.Entry(form_card, width=30)
-        self._author_entry.grid(row=1, column=1, padx=(8, 0), sticky="ew", pady=(5, 0))
+        self._author_entry.grid(row=1, column=1, padx=(
+            8, 0), sticky="ew", pady=(5, 0))
 
         tk.Label(form_card, text="Pages", bg=CARD_BG, fg="black").grid(
             row=2, column=0, sticky="w", pady=(5, 0)
         )
         self._pages_entry = tk.Entry(form_card, width=10)
-        self._pages_entry.grid(row=2, column=1, padx=(8, 0), sticky="w", pady=(5, 0))
+        self._pages_entry.grid(row=2, column=1, padx=(
+            8, 0), sticky="w", pady=(5, 0))
 
         add_button = tk.Button(
             form_card,
@@ -86,6 +91,34 @@ class MainView(tk.Frame):
                         pady=(10, 0), sticky="ew")
 
         form_card.grid_columnconfigure(1, weight=1)
+
+        search_frame = tk.Frame(self, bg=BG)
+        search_frame.pack(fill="x", pady=(0, 5))
+
+        tk.Label(
+            search_frame,
+            text="Search (title or author):",
+            bg=BG,
+            fg="black"
+        ).pack(side="left")
+
+        search_entry = tk.Entry(
+            search_frame, textvariable=self._search_var, width=30)
+        search_entry.pack(side="left", padx=(5, 0))
+
+        search_button = tk.Button(
+            search_frame,
+            text="Search",
+            command=self._handle_search
+        )
+        search_button.pack(side="left", padx=(5, 0))
+
+        clear_button = tk.Button(
+            search_frame,
+            text="Clear",
+            command=self._handle_clear_search
+        )
+        clear_button.pack(side="left", padx=(5, 0))
 
         lists_card = tk.Frame(
             self,
@@ -112,7 +145,6 @@ class MainView(tk.Frame):
         self._unread_listbox = tk.Listbox(unread_frame, width=60, height=8)
         self._unread_listbox.pack(fill="both", expand=True, pady=(5, 0))
 
-        # Luetut
         read_frame = tk.Frame(lists_card, bg=CARD_BG)
         read_frame.pack(fill="both", expand=True, pady=(5, 0))
 
@@ -128,8 +160,18 @@ class MainView(tk.Frame):
         self._read_listbox = tk.Listbox(read_frame, width=60, height=8)
         self._read_listbox.pack(fill="both", expand=True, pady=(5, 0))
 
-        self._unread_listbox.bind("<Double-Button-1>", self._handle_toggle_read)
+        self._unread_listbox.bind(
+            "<Double-Button-1>", self._handle_toggle_read)
         self._read_listbox.bind("<Double-Button-1>", self._handle_toggle_read)
+
+        hint_label = tk.Label(
+            self,
+            text="Double-click a book to mark as read/unread",
+            bg=BG,
+            fg="black",
+            font=("Arial", 9, "italic"),
+        )
+        hint_label.pack(anchor="w", padx=(2, 0), pady=(0, 5))
 
         bottom_frame = tk.Frame(self, bg=BG)
         bottom_frame.pack(fill="x")
@@ -207,9 +249,24 @@ class MainView(tk.Frame):
         self._author_entry.delete(0, tk.END)
         self._pages_entry.delete(0, tk.END)
 
+    def _handle_search(self):
+        """Suodattaa kirjalistan hakutekstin perusteella."""
+        self._current_filter = self._search_var.get().strip().lower()
+        self._refresh_book_list()
+
+        if self._current_filter and not self._unread_indices and not self._read_indices:
+            messagebox.showinfo(
+                "No books found", "No books match your search.")
+
+    def _handle_clear_search(self):
+        """Tyhjentää haun ja näyttää kaikki kirjat."""
+        self._search_var.set("")
+        self._current_filter = ""
+        self._refresh_book_list()
+
     def _handle_toggle_read(self, event):
         """Käsittelee kaksoisklikkauksen, joka siirtää kirjan luettu-tilaan.
-        
+
         Args:
             event: Tkinterin tapahtumaolio, joka kertoo kummassa tilassa kirja on.
         """
@@ -277,8 +334,15 @@ class MainView(tk.Frame):
                 read = book.get("read", False)
                 line = f"{title} — {author} ({pages} pages)"
             else:
+                title = ""
+                author = ""
                 read = False
                 line = str(book)
+
+            if self._current_filter:
+                haystack = f"{title} {author}".lower()
+                if self._current_filter not in haystack:
+                    continue
 
             if read:
                 self._read_indices.append(i)

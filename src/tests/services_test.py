@@ -23,7 +23,8 @@ class TestUserService(unittest.TestCase):
 
     def test_create_user_success(self):
         self.user_service.create_user("testuser", "testpassword")
-        self.assertTrue(self.user_service.authenticate("testuser", "testpassword"))
+        self.assertTrue(self.user_service.authenticate(
+            "testuser", "testpassword"))
 
     def test_create_user_and_reject_empty_username(self):
         with self.assertRaises(ValueError):
@@ -62,8 +63,10 @@ class TestUserService(unittest.TestCase):
 
     def test_authenticate_returns_false_for_incorrect_username_or_password(self):
         self.user_service.create_user("testuser", "password")
-        self.assertFalse(self.user_service.authenticate("testuser", "wrongpassword"))
-        self.assertFalse(self.user_service.authenticate("unknownuser", "password"))
+        self.assertFalse(self.user_service.authenticate(
+            "testuser", "wrongpassword"))
+        self.assertFalse(self.user_service.authenticate(
+            "unknownuser", "password"))
 
     def test_load_users_file_not_found(self):
         if os.path.exists(self.test_file):

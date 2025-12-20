@@ -1,13 +1,13 @@
 """Yhteiset väriteemat käyttöliittymälle."""
 
-#tausta
+# tausta
 BG = "#ffeaf2"
 
-#kortin sisäosa
+# kortin sisäosa
 CARD_BG = "#ffffff"
 
-#reunaväri
+# reunaväri
 BORDER = "#f5a8c7"
 
-#linkin väri
+# linkin väri
 LINK = "#eb0a64"

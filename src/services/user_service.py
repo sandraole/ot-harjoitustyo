@@ -6,17 +6,18 @@ from data.file_utils import open_for_write
 
 class UserService:
     """Luokka joka vastaa käyttäjien luomisesta ja kirjautumisesta.
-    
+
     Käyttäjät tallennetaaj sanakirjana JSON-tiedostoon.
     Avaimena toimii käyttäjätunnut ja arvona salasana.
-    
+
     Attributes:
         _file_path: JSON-tiedoston polku, johon käyttäjät tallennetaan.
         _users: Muistissa pidettävä sanakirja käyttäjätunnuksista ja salasanoista.
     """
+
     def __init__(self, file_path="data/users.json"):
         """"Luo uuden User_service olion.
-        
+
         Args:
             file_path: tiedoston polku, mihin tallennetaan käyttäjät.
         """
@@ -26,7 +27,7 @@ class UserService:
 
     def _load_users(self):
         """Lataa JSON-tiedostosta käyttäjäy.
-        
+
         Jos tiedostoa ei ole tai se on virheellinen, tehdään uusi sanakirja.
         """
         try:
@@ -47,11 +48,11 @@ class UserService:
 
     def create_user(self, username, password):
         """Jos käyttäjätunnus on vapaa -- > luodaan uusi käyttäjätunnus.
-        
+
         Args:
             username: käyttäjätunnus.
             password: salasana.
-            
+
         Raises:
             ValueError: Jos käyttäjätunnus on jo käytössä, jos tunnus tai salasana
             puuttuvat.
@@ -70,11 +71,11 @@ class UserService:
 
     def authenticate(self, username, password):
         """Varmistaa vastaavatko käyttäjätunnus ja salasana toisiaan.
-        
+
         Args:
             username: käyttäjätunnus.
             passwors: salasana.
-            
+
         Returns:
             True, jos tunnus ja salasana täsmäävät, muuten False.
         """
@@ -82,7 +83,7 @@ class UserService:
 
     def login(self, username, password):
         """"Kirjaa käyttäjän sisään.
-        
+
         Args:
             username: käyttäjätunnus.
             passwors: salasana.

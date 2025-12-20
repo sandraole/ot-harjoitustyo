@@ -6,10 +6,10 @@ from data.file_utils import open_for_write
 
 class BookRepository:
     """Kirjojen tallenuksesta ja lataamisesta vastaava luokka.
-    
+
     Kirjat tallennetaan JSON-tiedostoon listana sanakirjoina, jonka avaimia ovat:
     title, author, pages, read
-    
+
     Attributes: 
         _file_path: polku JSON-tiedostoon.
         _books: tämänhetkiset kirjat muistissa.
@@ -17,7 +17,7 @@ class BookRepository:
 
     def __init__(self, file_path="data/books.json"):
         """Alustaa kirjarekisterin annetulle tiedostopolulle.
-        
+
         Args:
             file_path: Tallenukseen käytettävän JSON-tiedoston polku.
         """
@@ -27,7 +27,7 @@ class BookRepository:
 
     def _load_books(self):
         """Lataa kirjat JSON-tiedostosta muistiin.
-        
+
         Jos tiedosto puuttuu tai se ei ole validi, luodaan tyhjä kirjalista.
         Tiedosot, joista puuttuu "read", lisätään false
         """
@@ -53,7 +53,7 @@ class BookRepository:
 
     def add_book(self, title, author, pages):
         """Lisää uuden kirjan listaan ja tallentaa sen.
-        
+
         Args:
             title: kirjan nimi.
             author: kirjailija.
@@ -70,9 +70,9 @@ class BookRepository:
 
     def delete_by_index(self, index: int):
         """Poistaa kirjan.
-        
+
         Jos indeksi on väärä, tulee virheilmoitus ja kirjaa ei poisteta.
-        
+
         Args:
             index: poistettavan kirjan indeksi.
         """
@@ -84,7 +84,7 @@ class BookRepository:
 
     def set_read_status(self, index: int, read: bool):
         """Siirtää kirjan luetuksi.
-        
+
         Args:
             index: kirjan indeksi.
             read: True, jos kirja on luettu ja muuten False.
@@ -104,7 +104,7 @@ class BookRepository:
 
     def toggle_read_status(self, index: int):
         """Siirtää/kääntää kirjan luettu tilan ei luetuksi.
-        
+
         Args:
             index: kirjan indeksi.
         """
@@ -124,7 +124,7 @@ class BookRepository:
 
     def get_all(self):
         """Palauttaa kaikki kirjat listana.
-        
+
         Returns:
             Lista sanakirjoja.
         """
