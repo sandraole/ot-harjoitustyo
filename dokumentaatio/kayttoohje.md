@@ -39,10 +39,12 @@ Kirjalistanäkymässä käyttäjä voi:
 - Etsiä kirjoja hakukentällä kirjan nimen tai kirjailijan mukaan
 - Merkitä kirjan luetuksi tai lukemattomaksi kaksoisklikkaamalla sitä listassa
 - Tarkastella luettuja ja lukemattomia sivuja pylväsdiagrammina painamalla "Show reading chart"
+- Nähdä luettujen ja lukemattomien kirjojen määrän
 - Vaihtaa luettujen sivujen esitystapaa klikkaamalla "Read pages" tekstiä (näkyy joko sivumääränä tai prosenttiosuutena)
 - Kirjautua ulos painamalla "Logout"
 
 ![](https://github.com/sandraole/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/Screenshot%20from%202025-12-20%2020-21-09.png)
+
 
 
 
