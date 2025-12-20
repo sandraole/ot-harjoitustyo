@@ -21,7 +21,7 @@ Myöhemmin sovellusta voidaan laajentaa myös useammalle käyttäjälle.
 - Sovellus osaa laskea ja näyttää: (Tehty)
   - luettujen kirjojen määrän
   - kokonaismäärän kaikista kirjoista
-  - luettujen sivujen prosenttiosuuden
+  - luettujen sivujen prosenttiosuuden TAI sivumäärän
 - Käyttäjän kirjalista tallennetaan tietokantaan/tiedostoon, jotta tiedot säilyvät ohjelman sulkemisen jälkeen. (Tehty)
   
 ### Jatkokehitysideat
@@ -40,6 +40,7 @@ Myöhemmin sovellusta voidaan laajentaa myös useammalle käyttäjälle.
 - Poista kirja
 - Näytä tilastot
 - Kirjaudu ulos
+
 
 
 
