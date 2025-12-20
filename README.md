@@ -27,15 +27,6 @@ Asenna riipuvuudet komennolla:
 poetry install
 ```
 
-### Vaadittavat alustustoimenpiteet
-
-Suorita alustustoimenpiteet komennolla:
-
-```bash
-poetry run invoke build
-```
-
-
 ## Komentorivitoiminnot
 
 ### Ohjelman käynnistäminen
