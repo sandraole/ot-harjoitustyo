@@ -1,55 +1,84 @@
 # Book Tracker - Vaatimusmäärittely
 
-Tässä dokumentissa on Book Tracker -sovelluksen alustava määrittely.
-Sovellus on henkilökohtainen lukupäiväkirja, jonka avulla voi seurata lukemiaan kirjoja ja edistymistään.
+## Sovelluksen tarkoitus
 
-## Sovelluksen idea
-
-Book Tracker on sovellus, jonka avulla käyttäjä voi seurata lukemiaan kirjoja ja omia lukutavoitteitaan. Käyttäjä voi lisätä kirjoja lukulistalle, merkitä kirjoja luetuiksi sekä seurata luettujen kirjojen ja sivujen määrää. Sovelluksen tarkoituksena on motivoida käyttäjää lukemaan enemmän ja toimia muistilistana jo luetuista kirjoista.
+Book Tracker on henkilökohtainen lukupäiväkirja, jonka avulla käyttäjä voi seurata lukemiaan kirjoja ja omaa lukemisen edistymistään. Käyttäjä voi lisätä kirjoja listalle, merkitä ne luetuiksi sekä tarkastella tilastoja luetuista kirjoista ja sivuista.
 
 ### Käyttäjät
-Sovelluksessa on aluksi tarkoitus olla vain yksi käyttäjärooli: ___normaali käyttäjä___, joka käyttää sovellusta henkilökohtaisesti.
-Myöhemmin sovellusta voidaan laajentaa myös useammalle käyttäjälle.
 
-### Perusversion toiminnallisuudet
-- Käyttäjä voi tehdä käyttäjätunnuksen. (Tehty)
-- Käyttäjä voi kirjautua omalle sivulleen omalla käyttäjätunnuksella. (Tehty)
-- Käyttäjä voi lisätä uuden kirjan listalle (nimi, kirjailija, sivumääärä) (Tehty)
-- Käyttäjä voi poistaa kirjan. (Tehty)
-- Käyttäjä voi merkitä kirjan luetuksi. (Tehty)
-- Käyttäjä voi nähdä kaikki kirjat (eritelty luettuihin ja lukemattomiin) (Tehty)
-- Sovellus osaa laskea ja näyttää: (Tehty)
-  - luettujen kirjojen määrän
-  - kokonaismäärän kaikista kirjoista
-  - luettujen sivujen prosenttiosuuden TAI sivumäärän
-- Käyttäjän kirjalista tallennetaan tietokantaan/tiedostoon, jotta tiedot säilyvät ohjelman sulkemisen jälkeen. (Tehty)
-  
-### Jatkokehitysideat
-- Search bar. (Tehty)
-- Käyttäjä voi tarkastella lukemansa ja lukemattomat sivut pylväsdiagrammissa matplotlib-kirjaston avulla. (Tehty)
-- Kirjojen lajittelu kirjailijan, nimen tai sivumäärän mukaan.
-- Mahdollisuus arvostella luettu kirja.
-- Lukemistavoitteen asettaminen.
-- Useampi käyttäjärooli - niille mahdollisesti eri käyttäjäoikeuksia.
+Sovelluksessa on yksi käyttäjärooli: normaali käyttäjä.
+Useita käyttäjätunnuksia voidaan luoda, ja jokaisella käyttäjällä on oma, erillinen kirjalistansa.
 
-### Esimerkki valikosta:
-- Lisää kirja
-- Näytä kaikki kirjat
-- Merkitse kirja luetuksi / Päivitä edistymistä
-- Poista kirja
-- Näytä tilastot
-- Kirjaudu ulos
+### Käyttöliittymä
 
+Sovellus koostuu kolmesta näkymästä:̈́
+- Login - kirjautuminen sovellukseen tai siirtyminen rekisteröitymiseen
+- Register - uuden käyttäjätunnuksne luominen
+- Main - kirjautuneen käyttäjän oma kirjalista ja tilastot
 
+Sovellus käynnistyy "Login" näkymään ja onnistuneen kirjautumisen jälkeen käyttäjä siirtyy omaan kirjalista näkymään.
 
+## Perusversion toiminnallisuudet
 
+### Ennen kirjautumista
 
+- Käyttäjä voi luoda uuden käyttäjätunnuksen
+  - Käyttäjätunnuksen on oltava uusi
+  - Käyttäjän täytyy antaa käyttäjätunnus ja salasana, tyhjiä kenttiä ei hyväksytä
+- Käyttäjä voi kirjautua sisään jo olemassa olevilla tunnuksilla
+  - Jos käyttäjätunnusta ei ole tai se on väärä, sovellus näyttää virheilmoituksen
 
+### Kirjautumisen jälkeen
 
+Käyttäjä näkee oman kirjalistansa. Toiminnot:
+- **Kirjan lisääminen**
+  - Käyttäjä voi lisätä uuden kirjan antamalla:
+    - nimen (title)
+    - kirjailijan (author)
+    - sivumäärän (pages)
+  - Sivumäärän tulee olla positiivinen kokonaisluku, muuten tulee virheilmoitus
+- **Kirjojen listaus ja luettu-tila**
+  - Käyttäjä näkee omat kirjat kahdessa listassa:
+    - Unread books
+    - Read books
+  - Käyttäjä voi kaksoisklikkaamalla kirjaa merkitä kirjan luetuksi ja päinvastoin
+- **Kirjan poistaminen**
+  - Käyttäjä voi poistaa valitun kirjan "Delete selected book" napilla
+  - Poistamista edeltää varmistkysymys
+- **Haku**
+  - Käyttäjä voi hakea kirjoja hakukentällä
+  - Kirjaa haetan kirjan tai kirjailijan nimellä
+  - Jos kirjaa ei löydy, tulee virheilmoitus
+- **Tilastot**
+  - Käyttäjä näkee oikeasta alakulmasta tilastot:
+    - luettujen kirjojen määrä
+    - kaikkien kirjojen määrä
+    - luettujen sivujen määrä ja prosenttiosuus kaikista sivuista
+  - "Read pages" linkkiä painamalla käyttäjä voi vaihtaa näkymää:
+    - prosenttiosuus
+    - sivumäärä
+- **Pylväsdiagrammi (matplotlib)**
+  - Käyttäjä voi painamalla nappia "Show reading chart" avata pylväsdiagrammin, jossa näkyy:
+    - luettujen sivujen määrä
+    - lukemattomien sivujen määrä
+- **Uloskirjautuminen**
+  - Käyttäjä voi kirjautua ulos, jolloin sovellus palaa "Login" näkymään
+  - Eri käyttäjien kirjalistat ovat erillisiä ja tallentuvat käyttäjäkohtaisiin tiedostoihin
+ 
+## Tiedon tallennus
 
+- Käyttäjien kirjautumistiedot tallennetaan JSON-tiedostoon
+- Jokaisen käyttäjän kirjalista tallennetaan erilliseen JSON-tiedostoon ja tiedot säilyvät ohjelman sulkemisen jälkeen
+- Tiedostot luodaan automaattisesti, jos niitä ei vielä ole
 
+## Jatkokehitysideat
 
-
+Seuraavia toiminnallisuuksia ei ole vielä toteutettu, mutta ne olisi mahdollista lisätä myöhemmin:
+- Kirjojen lajittelu kirjailijan, nimen tai sivumäärän mukaan
+- Mahdollisuus arvostella luettu kirja
+- Lukemistavoitteen asettaminen
+- Useampi käyttäjärooli, joilla erilaiset oikeudet
+- Kirjojen tietojen muokkaaminen jälkikäteen
 
 
 
