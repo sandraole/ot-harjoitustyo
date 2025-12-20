@@ -62,7 +62,8 @@ Sovellusta on testattu vain Linux-ympäristössä seuraavasti:
 
 ## Sovellukseen jääneet laatuongelmat
 
-- Tkinteriä ei testata automaattisesti. UI-muutokset voivat rikkoa asioita, joita yksikkötestit wivät havaitse.
+- Tkinteriä ei testata automaattisesti. UI-muutokset voivat rikkoa asioita, joita yksikkötestit eivät havaitse.
 - matplotlib-kaavion toimivuus on testattu vain manuaalisesti.
 - Ei ole testattu tilannetta, jossa matplotlib ei ole saatavilla
 - Ei olla testattu virhetilanteita tiedostokäsittelyssä (puuttuvat oikeudet data-hakemsitoon)
+
