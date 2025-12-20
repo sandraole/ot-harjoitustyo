@@ -11,8 +11,9 @@
 | 9.12 | 12   | Tein toiminnallisuudet: käyttäjä voi merkata kirjan luetuksi ja käyttäjä näkee erikseen lukemattomat ja luetut kirjat. Käyttäjä voi kaksoisklikkaamalla kirjaa vaikuttaa kirjan sijaintiin. Lisäsin uusia testejä ja varmisit, että testikattavuus on yli 60%. Sovelluslogiikka siirretty pois käyttöliittymäkoodista. Sekvenssikaavio lisätty ja arkkitehtuuri tiedostoon lisätty alustava arkkitehtuurikuvaus. Pyritty siistimään koodin laatua. Docstring-dokumentointi tehty. Laadittu alustava käyttöohje. Julkaistu uusin release.
 | 12.-13.12 | 4  | Lisätty puuttuvaan tiedostoon docstringit. Tehty toiminnallisuudet: käyttäjä näkee kaikki kirjat, näkee luettujen kirjojen osuuden ja luettujen sivujen prosenttimäärän |
 | 19.12 | 4 | Uuden UI rakentamista. Kyseisenä päivänä ei pushattu mitään vielä githubiin. |
-| 20.12 | ? | Uusi UI pushattu. Käyttäjä voi nähdä luettujen kirjojen sivumäärän sivuina tai prsentteina. Käyttäjä voi etsiä kirjoja search barin avulla kirjoittamalla kirjailijan tai kirjan nimen. |
+| 20.12 | ? | Uusi UI pushattu. Käyttäjä voi nähdä luettujen kirjojen sivumäärän sivuina tai prsentteina. Käyttäjä voi etsiä kirjoja search barin avulla kirjoittamalla kirjailijan tai kirjan nimen. Käyttäjä voi tarkastella lukemansa ja lukemattomat sivut pylväsdiagrammissa matplotlib-kirjaston avulla. |
 | Yht.  | 41   | |
+
 
 
 
