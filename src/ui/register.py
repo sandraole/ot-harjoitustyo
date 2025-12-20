@@ -2,6 +2,7 @@
 
 import tkinter as tk
 from tkinter import ttk, messagebox
+from ui.theme import BG, CARD_BG, BORDER
 
 
 class RegisterView(tk.Frame):
@@ -27,41 +28,58 @@ class RegisterView(tk.Frame):
         self._on_success = on_success
         self._on_cancel = on_cancel
 
-        title_label = tk.Label(
-            self,
-            text="Register",
-            font=("Arial", 16)
-        )
-        title_label.grid(row=0, column=0, columnspan=2, pady=(0, 10))
+        outer = tk.Frame(self, bg=BG)
+        outer.pack(fill="both", expand=True)
 
-        username_label = tk.Label(self, text="Username")
+        card = tk.Frame(
+            outer,
+            bg=CARD_BG,
+            padx=20,
+            pady=20,
+            highlightbackground=BORDER,
+            highlightthickness=2,
+        )
+        card.pack(expand=True, fill="both", padx=40, pady=40)
+
+        title_label = tk.Label(
+            card,
+            text="Create account",
+            font=("Arial", 18, "bold"),
+            bg=CARD_BG,
+            fg="black",
+        )
+        title_label.grid(row=0, column=0, columnspan=2, pady=(0, 15))
+
+        username_label = tk.Label(card, text="Username", bg=CARD_BG, fg="black")
         username_label.grid(row=1, column=0, sticky="w", pady=5)
 
-        self._username_entry = ttk.Entry(self)
-        self._username_entry.grid(row=1, column=1, sticky="ew", pady=5)
+        self._username_entry = ttk.Entry(card)
+        self._username_entry.grid(row=1, column=1, sticky="ew", pady=5, padx=(8, 0))
 
-        password_label = tk.Label(self, text="Password")
+        password_label = tk.Label(card, text="Password", bg=CARD_BG, fg="black")
         password_label.grid(row=2, column=0, sticky="w", pady=5)
 
-        self._password_entry = ttk.Entry(self, show="*")
-        self._password_entry.grid(row=2, column=1, sticky="ew", pady=5)
+        self._password_entry = ttk.Entry(card, show="*")
+        self._password_entry.grid(row=2, column=1, sticky="ew", pady=5, padx=(8, 0))
+
+        buttons_frame = tk.Frame(card, bg=CARD_BG)
+        buttons_frame.grid(row=3, column=0, columnspan=2, pady=(15, 0), sticky="e")
 
         create_button = ttk.Button(
-            self,
+            buttons_frame,
             text="Create account",
             command=self._handle_create_user
         )
-        create_button.grid(row=3, column=0, pady=(10, 0))
+        create_button.grid(row=0, column=0, padx=(0, 8))
 
         cancel_button = ttk.Button(
-            self,
+            buttons_frame,
             text="Back to login",
             command=self._on_cancel
         )
-        cancel_button.grid(row=3, column=1, pady=(10, 0))
+        cancel_button.grid(row=0, column=1)
 
-        self.grid_columnconfigure(0, weight=0)
-        self.grid_columnconfigure(1, weight=1)
+        card.grid_columnconfigure(1, weight=1)
 
     def _handle_create_user(self):
         """"On vastuussa uuden käyttäjän luomisesta.

@@ -6,6 +6,7 @@ from ui.main import MainView
 from ui.register import RegisterView
 from services.book_service import BookService
 from repositories.book_repository import BookRepository
+from ui.theme import BG, CARD_BG, BORDER
 
 
 class UI:
@@ -44,38 +45,62 @@ class UI:
         """Näyttää kirjautumissivun."""
         self._clear_current_view()
 
-        frame = tk.Frame(master=self._root, padx=10, pady=10)
-        frame.pack(fill="both", expand=True)
-        self._current_view = frame
+        outer = tk.Frame(self._root, bg=BG)
+        outer.pack(fill="both", expand=True)
+        self._current_view = outer
+
+        card = tk.Frame(
+            outer,
+            bg=CARD_BG,
+            padx=20,
+            pady=20,
+            highlightbackground=BORDER,
+            highlightthickness=2,
+        )
+        card.pack(expand=True, fill="both", padx=40, pady=40)
 
         tk.Label(
-            frame,
+            card,
             text="Login",
-            font=("Arial", 16)
-        ).pack(pady=10)
+            font=("Arial", 18, "bold"),
+            bg=CARD_BG,
+            fg="black",
+        ).pack(pady=(0, 15))
 
-        tk.Label(frame, text="Username").pack()
-        username_entry = ttk.Entry(frame)
-        username_entry.pack()
+        form_frame = tk.Frame(card, bg=CARD_BG)
+        form_frame.pack(fill="x")
 
-        tk.Label(frame, text="Password").pack()
-        password_entry = ttk.Entry(frame, show="*")
-        password_entry.pack()
+        tk.Label(form_frame, text="Username", bg=CARD_BG, fg="black").grid(
+            row=0, column=0, sticky="w", pady=(0, 8)
+        )
+        username_entry = ttk.Entry(form_frame)
+        username_entry.grid(row=0, column=1, sticky="ew", pady=(0, 8), padx=(8, 0))
+
+        tk.Label(form_frame, text="Password", bg=CARD_BG, fg="black").grid(
+            row=1, column=0, sticky="w", pady=(0, 8)
+        )
+        password_entry = ttk.Entry(form_frame, show="*")
+        password_entry.grid(row=1, column=1, sticky="ew", pady=(0, 8), padx=(8, 0))
+
+        form_frame.grid_columnconfigure(1, weight=1)
+
+        buttons_frame = tk.Frame(card, bg=CARD_BG)
+        buttons_frame.pack(fill="x", pady=(10, 0))
 
         ttk.Button(
-            frame,
+            buttons_frame,
             text="Sign In",
             command=lambda: self._sign_in(
                 username_entry.get(),
                 password_entry.get()
             )
-        ).pack(pady=5)
+        ).grid(row=0, column=0, padx=(0, 8))
 
         ttk.Button(
-            frame,
+            buttons_frame,
             text="Register",
             command=self._show_register_view
-        ).pack()
+        ).grid(row=0, column=1)
 
     def _sign_in(self, username, password):
         """Käsittelee kirjautumisnapin painamisen.

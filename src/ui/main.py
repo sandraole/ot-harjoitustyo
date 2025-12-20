@@ -1,7 +1,8 @@
-"""Sovelluksen päänäkumä --> kirjalista."""
+"""Sovelluksen päänäkymä --> kirjalista."""
 
 import tkinter as tk
 from tkinter import messagebox
+from ui.theme import BG, CARD_BG, BORDER
 
 
 class MainView(tk.Frame):
@@ -29,7 +30,7 @@ class MainView(tk.Frame):
             logout_handler: funktio, jota kututaan uloskirjautuessa.
             book_service: vastaa kirjojen käsittelystä.
         """
-        super().__init__(root, padx=10, pady=10)
+        super().__init__(root, padx=10, pady=10, bg=BG)
 
         self._root = root
         self._username = username
@@ -42,81 +43,124 @@ class MainView(tk.Frame):
         title_label = tk.Label(
             self,
             text=f"Welcome to Book Tracker, {self._username}",
-            font=("Arial", 16)
+            font=("Arial", 18, "bold"),
+            bg=BG,
+            fg="black",
         )
-        title_label.pack(pady=(0, 10))
+        title_label.pack(pady=(0, 15), anchor="w")
 
-        form_frame = tk.Frame(self)
-        form_frame.pack(pady=(0, 10))
+        form_card = tk.Frame(
+            self,
+            bg=CARD_BG,
+            padx=15,
+            pady=15,
+            highlightbackground=BORDER,
+            highlightthickness=2,
+        )
+        form_card.pack(fill="x", pady=(0, 10))
 
-        tk.Label(form_frame, text="Title").grid(row=0, column=0, sticky="w")
-        self._title_entry = tk.Entry(form_frame, width=30)
-        self._title_entry.grid(row=0, column=1, padx=(5, 0))
+        tk.Label(form_card, text="Title", bg=CARD_BG, fg="black").grid(
+            row=0, column=0, sticky="w"
+        )
+        self._title_entry = tk.Entry(form_card, width=30)
+        self._title_entry.grid(row=0, column=1, padx=(8, 0), sticky="ew")
 
-        tk.Label(form_frame, text="Author").grid(row=1, column=0, sticky="w")
-        self._author_entry = tk.Entry(form_frame, width=30)
-        self._author_entry.grid(row=1, column=1, padx=(5, 0))
+        tk.Label(form_card, text="Author", bg=CARD_BG, fg="black").grid(
+            row=1, column=0, sticky="w", pady=(5, 0)
+        )
+        self._author_entry = tk.Entry(form_card, width=30)
+        self._author_entry.grid(row=1, column=1, padx=(8, 0), sticky="ew", pady=(5, 0))
 
-        tk.Label(form_frame, text="Pages").grid(row=2, column=0, sticky="w")
-        self._pages_entry = tk.Entry(form_frame, width=10)
-        self._pages_entry.grid(row=2, column=1, padx=(5, 0), sticky="w")
+        tk.Label(form_card, text="Pages", bg=CARD_BG, fg="black").grid(
+            row=2, column=0, sticky="w", pady=(5, 0)
+        )
+        self._pages_entry = tk.Entry(form_card, width=10)
+        self._pages_entry.grid(row=2, column=1, padx=(8, 0), sticky="w", pady=(5, 0))
 
         add_button = tk.Button(
-            form_frame,
+            form_card,
             text="Add book",
             command=self._handle_add_book
         )
         add_button.grid(row=3, column=0, columnspan=2,
                         pady=(10, 0), sticky="ew")
 
-        list_frame = tk.Frame(self)
-        list_frame.pack(fill="both", expand=True)
+        form_card.grid_columnconfigure(1, weight=1)
 
-        unread_frame = tk.Frame(list_frame)
+        lists_card = tk.Frame(
+            self,
+            bg=CARD_BG,
+            padx=10,
+            pady=10,
+            highlightbackground=BORDER,
+            highlightthickness=2,
+        )
+        lists_card.pack(fill="both", expand=True, pady=(10, 10))
+
+        unread_frame = tk.Frame(lists_card, bg=CARD_BG)
         unread_frame.pack(fill="both", expand=True, pady=(0, 5))
 
-        unread_label = tk.Label(unread_frame, text="Unread books")
+        unread_label = tk.Label(
+            unread_frame,
+            text="Unread books",
+            bg=CARD_BG,
+            fg="black",
+            font=("Arial", 12, "bold"),
+        )
         unread_label.pack(anchor="w")
 
         self._unread_listbox = tk.Listbox(unread_frame, width=60, height=8)
-        self._unread_listbox.pack(fill="both", expand=True)
+        self._unread_listbox.pack(fill="both", expand=True, pady=(5, 0))
 
-        read_frame = tk.Frame(list_frame)
+        # Luetut
+        read_frame = tk.Frame(lists_card, bg=CARD_BG)
         read_frame.pack(fill="both", expand=True, pady=(5, 0))
 
-        read_label = tk.Label(read_frame, text="Read books")
+        read_label = tk.Label(
+            read_frame,
+            text="Read books",
+            bg=CARD_BG,
+            fg="black",
+            font=("Arial", 12, "bold"),
+        )
         read_label.pack(anchor="w")
 
         self._read_listbox = tk.Listbox(read_frame, width=60, height=8)
-        self._read_listbox.pack(fill="both", expand=True)
+        self._read_listbox.pack(fill="both", expand=True, pady=(5, 0))
 
         self._unread_listbox.bind("<Double-Button-1>", self._handle_toggle_read)
         self._read_listbox.bind("<Double-Button-1>", self._handle_toggle_read)
 
+        bottom_frame = tk.Frame(self, bg=BG)
+        bottom_frame.pack(fill="x")
+
+        buttons_frame = tk.Frame(bottom_frame, bg=BG)
+        buttons_frame.pack(side="left", anchor="w")
+
         delete_button = tk.Button(
-            list_frame,
+            buttons_frame,
             text="Delete selected book",
             command=self._handle_delete_book
         )
         delete_button.pack(pady=(5, 0), anchor="w")
 
         logout_button = tk.Button(
-            self,
+            buttons_frame,
             text="Logout",
             command=self._logout_handler
         )
         logout_button.pack(pady=(10, 0), anchor="w")
 
-        stats_frame = tk.Frame(self)
-        stats_frame.pack(pady=(10, 0), anchor="w")
+        stats_frame = tk.Frame(bottom_frame, bg=BG)
+        stats_frame.pack(side="right", anchor="e", padx=(0, 10), pady=(0, 5))
 
         self._read_count_var = tk.StringVar()
         self._total_count_var = tk.StringVar()
         self._read_percentage_var = tk.StringVar()
 
-        tk.Label(stats_frame, textvariable=self._read_count_var).pack(anchor="w")
-        tk.Label(stats_frame, textvariable=self._total_count_var).pack(anchor="w")
-        tk.Label(stats_frame, textvariable=self._read_percentage_var).pack(anchor="w")
+        tk.Label(stats_frame, textvariable=self._read_count_var, bg=BG, fg="black").pack(anchor="e")
+        tk.Label(stats_frame, textvariable=self._total_count_var, bg=BG, fg="black").pack(anchor="e")
+        tk.Label(stats_frame, textvariable=self._read_percentage_var, bg=BG, fg="black").pack(anchor="e")
 
         self._refresh_book_list()
 
