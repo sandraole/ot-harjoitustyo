@@ -20,6 +20,13 @@ class MainView(tk.Frame):
         _books: viimeisimmät kirjat.
         _unread_indices: lista lukemattomien kirjojen indekseistä.
         _read_indices: lista luettujen kirjojen indekseistä.
+        _search_var: hakukentän teksti.
+        _current_filter: viimeisenä käytetty hakusuodatin.
+        _read_count_var: näyttää kaikki luetut kirjat.
+        _total_count_var: näyttää kaikki kirjat.
+        _read_pages_var: näyttää luetut sivut tai prosenttiosuudet.
+        _show_read_percentage: totuusarvo, joka kertoo näyetäänkö sivut prosentteina vai sivuina.
+        _last_stats: viimeisin haettu tilastosanakirja.
     """
 
     def __init__(self, root, username, logout_handler, book_service):
@@ -367,7 +374,12 @@ class MainView(tk.Frame):
         self._update_read_pages_text()
 
     def _toggle_read_pages_view(self, event=None):
-        """Vaihtaa luettujen sivujen näkymän (prosentti <-> sivumäärä)."""
+        """Vaihtaa luettujen sivujen näkymän (prosentti <-> sivumäärä).
+        Args: 
+            event: Tkinterin tapahtumaolio. Ei käytetä, mutta mukana, että
+            metodia pystytään kutsuman klikatessa.
+            
+        """
         self._show_read_percentage = not self._show_read_percentage
         self._update_read_pages_text()
 
