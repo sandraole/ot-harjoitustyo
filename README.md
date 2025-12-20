@@ -17,6 +17,8 @@ Sovelluksen tarkoituksena on motivoida käyttäjää lukemaan enemmän ja toimia
 
 [Käyttöohje](https://github.com/sandraole/ot-harjoitustyo/blob/master/dokumentaatio/kayttoohje.md)
 
+[Testausdokumentti](https://github.com/sandraole/ot-harjoitustyo/blob/master/dokumentaatio/testaus.md)
+
 ## Asennus
 
 ### Riippuvuuksien asentaminen
