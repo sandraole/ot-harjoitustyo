@@ -35,5 +35,7 @@
 - UI päivitetty
 - Käyttäjä voi katsoa luettujen kirjojen sivumäärän tai sivumäärien prosenttiosuuden painamalla oikeassa alakulmassa olevaa linkkiä
 - Käyttäjä voi etsiä kirjoja kirjailijan tai kirjan nimellä
+- Käyttäjä voi tarkastella lukemansa ja lukemattomat sivut pylväsdiagrammissa matplotlib-kirjaston avulla
+
 
 
