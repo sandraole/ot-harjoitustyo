@@ -25,14 +25,12 @@ Myöhemmin sovellusta voidaan laajentaa myös useammalle käyttäjälle.
 - Käyttäjän kirjalista tallennetaan tietokantaan/tiedostoon, jotta tiedot säilyvät ohjelman sulkemisen jälkeen. (Tehty)
   
 ### Jatkokehitysideat
+- Search bar (Tehty)
 - Kirjojen lajittelu kirjailijan, nimen tai sivumäärän mukaan.
 - Mahdollisuus arvostella luettu kirja.
 - Lukemistavoitteen asettaminen.
 - Useampi käyttäjärooli - niille mahdollisesti eri käyttäjäoikeuksia.
 
-### Luonnos käyttöliittymästä
-- Tulossa tällä viikolla ennen koodauksen aloittamista
-  
 ### Esimerkki valikosta:
 - Lisää kirja
 - Näytä kaikki kirjat
@@ -40,6 +38,7 @@ Myöhemmin sovellusta voidaan laajentaa myös useammalle käyttäjälle.
 - Poista kirja
 - Näytä tilastot
 - Kirjaudu ulos
+
 
 
 
