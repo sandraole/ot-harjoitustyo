@@ -8,3 +8,6 @@ CARD_BG = "#ffffff"
 
 #reunaväri
 BORDER = "#f5a8c7"
+
+#linkin väri
+LINK = "#eb0a64"

@@ -2,7 +2,7 @@
 
 import tkinter as tk
 from tkinter import messagebox
-from ui.theme import BG, CARD_BG, BORDER
+from ui.theme import BG, CARD_BG, BORDER, LINK
 
 
 class MainView(tk.Frame):
@@ -156,11 +156,35 @@ class MainView(tk.Frame):
 
         self._read_count_var = tk.StringVar()
         self._total_count_var = tk.StringVar()
-        self._read_percentage_var = tk.StringVar()
 
-        tk.Label(stats_frame, textvariable=self._read_count_var, bg=BG, fg="black").pack(anchor="e")
-        tk.Label(stats_frame, textvariable=self._total_count_var, bg=BG, fg="black").pack(anchor="e")
-        tk.Label(stats_frame, textvariable=self._read_percentage_var, bg=BG, fg="black").pack(anchor="e")
+        self._read_pages_var = tk.StringVar()
+        self._show_read_percentage = True
+
+        tk.Label(
+            stats_frame,
+            textvariable=self._read_count_var,
+            bg=BG,
+            fg="black"
+        ).pack(anchor="e")
+
+        tk.Label(
+            stats_frame,
+            textvariable=self._total_count_var,
+            bg=BG,
+            fg="black"
+        ).pack(anchor="e")
+
+        read_pages_label = tk.Label(
+            stats_frame,
+            textvariable=self._read_pages_var,
+            bg=BG,
+            fg=LINK,
+            font=("Arial", 11, "underline"),
+            cursor="hand2",
+        )
+        read_pages_label.pack(anchor="e")
+
+        read_pages_label.bind("<Button-1>", self._toggle_read_pages_view)
 
         self._refresh_book_list()
 
@@ -268,9 +292,25 @@ class MainView(tk.Frame):
     def _refresh_statistics(self):
         """Päivittää tilastotekstien sisällön."""
         stats = self._book_service.get_statistics()
+        self._last_stats = stats
 
         self._read_count_var.set(f"Read books: {stats['read_books']}")
         self._total_count_var.set(f"Total books: {stats['total_books']}")
-        self._read_percentage_var.set(
-            f"Read pages: {stats['read_page_percentage']:.1f}%"
-        )
+
+        self._update_read_pages_text()
+
+    def _toggle_read_pages_view(self, event=None):
+        """Vaihtaa luettujen sivujen näkymän (prosentti <-> sivumäärä)."""
+        self._show_read_percentage = not self._show_read_percentage
+        self._update_read_pages_text()
+
+    def _update_read_pages_text(self):
+        """Päivittää luettujen sivujen tekstin valitun näkymän mukaan."""
+        stats = self._last_stats
+
+        if self._show_read_percentage:
+            text = f"Read pages: {stats['read_page_percentage']:.1f}%"
+        else:
+            text = f"Read pages: {stats['read_pages']} / {stats['total_pages']}"
+
+        self._read_pages_var.set(text)

@@ -81,43 +81,32 @@ class BookService:
 
         Returns:
             Sanakirja:
-                total_books: kaikkien kirjojen lkm
                 read_books: luettujen kirjojen lkm
-                unread_books: lukemattomien kirjojen lkm
-                total_pages: kaikkien kirjojen sivumäärä yht
+                total_books: kaikkien kirjojen lkm
                 read_pages: luettujen kirjojen sivumäärä yht
+                total_pages: kaikkien kirjojen sivumäärä yht
                 read_page_percentage: luettujen sivujen määrä
         """
-        books = self._book_repository.get_all()
+        books = self.get_books()
 
         total_books = len(books)
-        read_books = 0
-        total_pages = 0
-        read_pages = 0
+        read_books = sum(1 for b in books if b.get("read", False))
 
-        for book in books:
-            if not isinstance(book, dict):
-                continue
-
-            pages = book.get("pages", 0)
-            total_pages += pages
-
-            if book.get("read", False):
-                read_books += 1
-                read_pages += pages
-
-        unread_books = total_books - read_books
+        total_pages = sum(b.get("pages", 0) for b in books)
+        read_pages = sum(
+            b.get("pages", 0) for b in books if b.get("read", False)
+        )
 
         if total_pages > 0:
-            read_page_percentage = (read_pages / total_pages) * 100
+            read_page_percentage = read_pages / total_pages * 100
         else:
             read_page_percentage = 0.0
 
         return {
-            "total_books": total_books,
             "read_books": read_books,
-            "unread_books": unread_books,
-            "total_pages": total_pages,
+            "total_books": total_books,
             "read_pages": read_pages,
+            "total_pages": total_pages,
             "read_page_percentage": read_page_percentage,
         }
+    

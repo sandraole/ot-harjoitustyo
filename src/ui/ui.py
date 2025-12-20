@@ -57,50 +57,49 @@ class UI:
             highlightbackground=BORDER,
             highlightthickness=2,
         )
-        card.pack(expand=True, fill="both", padx=40, pady=40)
 
-        tk.Label(
+        card.pack(expand=True)
+
+        title_label = tk.Label(
             card,
             text="Login",
             font=("Arial", 18, "bold"),
             bg=CARD_BG,
             fg="black",
-        ).pack(pady=(0, 15))
-
-        form_frame = tk.Frame(card, bg=CARD_BG)
-        form_frame.pack(fill="x")
-
-        tk.Label(form_frame, text="Username", bg=CARD_BG, fg="black").grid(
-            row=0, column=0, sticky="w", pady=(0, 8)
         )
-        username_entry = ttk.Entry(form_frame)
-        username_entry.grid(row=0, column=1, sticky="ew", pady=(0, 8), padx=(8, 0))
+        title_label.grid(row=0, column=0, columnspan=2, pady=(0, 15))
 
-        tk.Label(form_frame, text="Password", bg=CARD_BG, fg="black").grid(
-            row=1, column=0, sticky="w", pady=(0, 8)
-        )
-        password_entry = ttk.Entry(form_frame, show="*")
-        password_entry.grid(row=1, column=1, sticky="ew", pady=(0, 8), padx=(8, 0))
+        username_label = tk.Label(card, text="Username", bg=CARD_BG, fg="black")
+        username_label.grid(row=1, column=0, sticky="w", pady=5)
 
-        form_frame.grid_columnconfigure(1, weight=1)
+        username_entry = ttk.Entry(card, width=25)
+        username_entry.grid(row=1, column=1, pady=5, padx=(8, 0))
+
+        password_label = tk.Label(card, text="Password", bg=CARD_BG, fg="black")
+        password_label.grid(row=2, column=0, sticky="w", pady=5)
+
+        password_entry = ttk.Entry(card, show="*", width=25)
+        password_entry.grid(row=2, column=1, pady=5, padx=(8, 0))
 
         buttons_frame = tk.Frame(card, bg=CARD_BG)
-        buttons_frame.pack(fill="x", pady=(10, 0))
+        buttons_frame.grid(row=3, column=0, columnspan=2, pady=(15, 0))
 
-        ttk.Button(
+        sign_in_button = ttk.Button(
             buttons_frame,
             text="Sign In",
             command=lambda: self._sign_in(
                 username_entry.get(),
                 password_entry.get()
             )
-        ).grid(row=0, column=0, padx=(0, 8))
+        )
+        sign_in_button.grid(row=0, column=0, padx=(0, 8))
 
-        ttk.Button(
+        register_button = ttk.Button(
             buttons_frame,
             text="Register",
             command=self._show_register_view
-        ).grid(row=0, column=1)
+        )
+        register_button.grid(row=0, column=1)
 
     def _sign_in(self, username, password):
         """Käsittelee kirjautumisnapin painamisen.
