@@ -47,7 +47,6 @@ class MainView(tk.Frame):
         self._books = self._book_service.get_books()
         self._unread_indices = []
         self._read_indices = []
-
         self._search_var = tk.StringVar()
         self._current_filter = ""
 
@@ -331,7 +330,7 @@ class MainView(tk.Frame):
 
         self._book_service.delete_book(book_index)
 
-        self._books = self._book_service.get_all()
+        self._books = self._book_service.get_books()
         self._refresh_book_list()
 
     def _refresh_book_list(self):
@@ -401,13 +400,23 @@ class MainView(tk.Frame):
 
     def _handle_show_chart(self):
         """Näyttää pylväskaavion luetuista ja lukemattomista sivuista."""
-        stats = self._book_service.get_statistics()
+        total_pages = 0
+        read_pages = 0
 
-        read_pages = stats.get("read_pages", 0)
-        total_pages = stats.get("total_pages", 0)
+        for book in self._books:
+            if not isinstance(book, dict):
+                continue
+
+            pages = book.get("pages", 0)
+            total_pages += pages
+
+            if book.get("read", False):
+                read_pages += pages
+
         unread_pages = max(total_pages - read_pages, 0)
 
-        labels = ["Read pages", "Unread pages"]
+        labels = [f"Read pages ({read_pages})",
+                  f"Unread pages ({unread_pages})"]
         values = [read_pages, unread_pages]
 
         plt.figure()
