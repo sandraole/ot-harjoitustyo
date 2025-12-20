@@ -11,7 +11,7 @@ Book Tracker on henkilökohtainen lukupäiväkirja, jonka avulla käyttäjä voi
 
 [Arkkitehtuuri](https://github.com/sandraole/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)
 
-[Release](https://github.com/sandraole/ot-harjoitustyo/releases/tag/v1.0.2)
+[Release](https://github.com/sandraole/ot-harjoitustyo/releases/tag/v2.0.0)
 
 [Käyttöohje](https://github.com/sandraole/ot-harjoitustyo/blob/master/dokumentaatio/kayttoohje.md)
 
