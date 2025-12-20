@@ -1,6 +1,6 @@
 # Käyttöohje
 
-Lataa projektin uusin [release](https://github.com/sandraole/ot-harjoitustyo/releases/tag/v1.0.2) .
+Lataa projektin uusin [release](https://github.com/sandraole/ot-harjoitustyo/releases/tag/v2.0.0).
 
 ## Asennus
 
@@ -44,6 +44,7 @@ Kirjalistanäkymässä käyttäjä voi:
 - Kirjautua ulos painamalla "Logout"
 
 ![](https://github.com/sandraole/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/Screenshot%20from%202025-12-20%2020-21-09.png)
+
 
 
 
