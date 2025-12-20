@@ -31,4 +31,7 @@
 - Julkaistu uusin release
 - Käyttäjä näkee kuinka monta kirjaa on olemassa, montako niistä on luettu ja luettujen sivujen prosenttimäärän
 
+# Loppupalautus
+- UI päivitetty
+- Käyttäjä voi katsoa luettujen kirjojen sivumäärän tai sivumäärien prosenttiosuuden painamalla oikeassa alakulmassa olevaa linkkiä
 
